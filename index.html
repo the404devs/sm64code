@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>SM64 Colour Code Generator</title>
+
+		<!-- Stylesheets, plus our favicon -->
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+		<!-- For Chrome, which recently started ignoring the autoplay attribute of <audio>
+			They have some valid reasons for this, but blocking my yahoo sound effect is not one of them.
+			This is a decent workaround method, if anybody's interested. -->
+		<iframe src="img/yahoo.mp3" allow="autoplay" style="display:none" id="iframeAudio"></iframe>
+
+		<!-- Our local JS, as well as jQuery -->
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+	</head>
+	<body id="body">		
+		<div class="header">
+			<!-- This is painful to look at. Sorry. -->
+			<h1>
+				<span style="color: red">S</span><span style="color: blue">u</span><span style="color: yellow">p</span><span style="color: blue">e</span><span style="color: green">r</span> <span style="color: blue">M</span><span style="color: green">a</span><span style="color: yellow">r</span><span style="color: red">i</span><span style="color: green">o</span> <span style="color: red">6</span><span style="color: red">4</span>
+			</h1>
+			<h6 style="color: lightblue;">
+				Colour Code Generator
+			</h6>
+		</div>
+
+		<img id="yahoo" src="img/blj.png" width="300px">
+
+		<div class="content" style="display: none">			
+			<br>
+			<div class="row">
+				<div class="column">
+					<div class="blob">
+						<h2>Hat and Shirt</h2>
+						<p>Select Colour:</p>
+						<input class="button2" type="color" id="capCol" onchange="updateCap()" value="#ff0000">
+						<br>
+						<img class="mario" id="cap" src="img/cap.png" style="background-color: red">
+					</div>
+					<div class="blob">
+						<h2>Overalls</h2>
+						<p>Select Colour:</p>
+						<input class="button2" type="color" id="pantsCol" onchange="updatePants()" value="#0000ff">
+						<br>
+						<img class="mario" id="pants" src="img/overalls.png" style="background-color: blue">
+					</div>	 
+				</div>
+
+				<div class="column">
+					<div class="blob">
+						<h2>Face</h2>
+						<p>Select Colour:</p>
+						<input class="button2" type="color" id="faceCol" onchange="updateFace()" value="#fcbf79">
+						<br>
+						<img class="mario" id="face" src="img/face.png" style="background-color: #fcbf79">	
+					</div>
+
+					<div class="blob">
+						<h2>Hair</h2>
+						<p>Select Colour:</p>
+						<input class="button2" type="color" id="hairCol" onchange="updateHair()" value="#730600">
+						<br>
+						<img class="mario" id="hair" src="img/hair.png" style="background-color: #730600;">
+					</div>
+				</div>
+				
+				<div class="column">
+					<div class="blob">
+						<h2>Gloves</h2>
+						<p>Select Colour:</p>
+						<input class="button2" type="color" id="glovesCol" onchange="updateGloves()" value="#ffffff">
+						<br>
+						<img class="mario" id="gloves" src="img/gloves.png" style="background-color: white">
+					</div>	
+
+					<div class="blob">
+						<h2>Shoes</h2>
+						<p>Select Colour:</p>
+						<input class="button2" type="color" id="shoesCol" onchange="updateShoes()" value="#701c0f">
+						<br>
+						<img class="mario" id="shoes" src="img/shoes.png" style="background-color: #701c0f">	
+					</div>
+				</div>			
+
+				<div class="column">
+					<div class="blob" style="height: 660px;">
+						<h2>Your Code:</h2>
+						<button class="button2" onclick="generateUSA()"><span>Generate (NTSC-U)</span></button>
+						<button class="button2" onclick="generateJAP()"><span>Generate (NTSC-J)</span></button>
+						<button class="button2" onclick="generatePAL()"><span>Generate (PAL)</span></button>
+						<button class="button2" onclick="generateSHI()"><span>Generate (Shindou)</span></button>
+						<p id="type">Click one of the buttons above once you've chosen your colours!</p>
+						<textarea id="code" readonly></textarea>
+						<button class="button2" onclick="reset()"><span>Reset Mario</span></button>
+					</div>				
+				</div>
+			</div>
+			
+			<br>
+			
+			<div class="row">
+				<div class="blab">
+					<h2>How to use your code:</h2>
+					<p>After you hit the button to generate the code for the version of the game you're running, you'll have to add the code into your emulator as a new cheat code. In Project64, this can be done through the top menu bar at System>>Cheats. Click the arrow on the right hand side to open the cheat creation section. Paste your code into the box labeled "address," and give a name for the code in the "Name" box. Click on "Add Cheat," and it will appear in the list on the left hand side. Now just check off the box beside it and Mario will be sporting his new look!</p>
+				</div>
+			</div>
+
+			<br>
+		</div>
+
+		<div class="footer" style="display: none">
+			<span class="footButton" style="font-size:30px;cursor:pointer;left:0;" onclick="location.href = 'http://www.the404.nl';"><i class="fa fa-home"></i></span>
+			<p> 					
+				SM64 Colour Code Generator
+				<br>
+				Version 1.1.1 (03/10/19)
+				<br>
+				Credit and shoutouts to Simpleflips for the BLJ emote
+			</p>
+		</div>
+	</body>
+</html>
