@@ -4,3 +4,7 @@
 A tool that creates action replay codes to change mario's colours in sm64
 
 http://the404.nl/software/sm64code/
+
+
+v1.1 (09/16/18): Added support for all 4 SM64 versions.
+v1.1.1 (03/10/19): Minor tweaks. Happy Mario Day!
