@@ -5,6 +5,14 @@ A tool that creates action replay codes to change mario's colours in sm64
 
 https://sm64code.the404.nl
 
+### *2.0.0 (08/05/2024)*
+------------------------
+- Apparently people use this thing
+- Here, I fixed it for you.
+
+- Now properly supports shadow/highlight colours for the different Mario parts
+- Support for iQue version.
+
 ### *1.1.1 (03/10/2019)*
 ------------------------
 - Minor tweaks. Happy Mario day!

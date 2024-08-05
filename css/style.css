@@ -1,14 +1,33 @@
-/*#8955a2
-#724c8b
-#7103ba
-#1b2b34*/
-* {
-    box-sizing: border-box;
-}
+body.theme-light {
+    --background: #f1f5f8;
+    --background-alt: #000000b0;
+    --background-image: url("../img/wallpaper.jpg");
+    --background-gradient: linear-gradient(0deg, #cae8ff 0%, #ffffff 90%);
+    --border-alt: rgba(0,0,0,0);
+    --border: rgba(255, 255, 255, 0.5);
+    --border-radius: 8px;
+    --text: #ddd; 
+    --text-alt: #fff; 
+    --button: #1886C4;
+    --theme: #c779ce;
+    --theme-alt: #06e0d0;
+    --link: #1888C4;
+    --important: #000;
+    --primary: #fff;
 
-x-model{
-  width: 100%;
-  height: 100%;
+    --shadow-color: rgba(0, 0, 0, 0.15);
+    --shadow-color-alt: rgba(199, 121, 206, 0.5);
+    --shadow: 0 3px 6px var(--shadow-color);
+    --shadow-alt: 0 3px 6px var(--shadow-color-alt);
+    --blur: blur(10px) brightness(0.75);
+
+    background: var(--background-image);
+    background-attachment: fixed;
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    height: auto;
+    scrollbar-color: unset;
+
 }
 
 @font-face{
@@ -16,278 +35,185 @@ x-model{
 	src: url("SuperMario256.ttf");
 }
 
-@font-face{
-	font-family: "Roboto";
-	src: url("../../../css/Roboto-Regular.ttf");
+.logo {
+    font-family: "mario";
+    width: 100%;
+    text-decoration: none;
+    color: red;
+    text-align: center;
+    margin-left: 0;
+    text-shadow: 3px 3px black;
+    padding: 8px;
 }
 
-body{
-	margin: 0;
-	background-color: black;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: cover;
-	transition: 0.5s;
-	font-family: "Roboto";
+.logo .logo-big {
+    font-size: 0.8em;
 }
 
-hr{
-	border-color: #724c8b;
-	border-width: 5px;
-	border-style: solid;
+.logo .logo-small {
+    font-size: 0.4em;
 }
 
-h1{
-	margin: 20px;
-}
-h2{
-  margin-top: 0;
-  text-decoration: underline;
-}
-h6{
-  margin: 5px;
-  font-size: 1em;
+.logo::before, .logo::after {
+    content: "";
+    display: none;
 }
 
-input{
-  width: 50% !important;
+div.content {
+    margin-bottom: 0;
+    margin-top: 0;
 }
 
-textarea{
-  border-style: solid;
-  border-radius: 5px;
-  border-color: black;
-  border-width: 2px;
-  height: 250px;
-  margin: 10px;
-  resize: none;
-  font-family: "roboto";
+div.content-wrapper#top-half {
+    margin-top: 100px;
 }
 
-.mario{
-  border-style: solid;
-  border-radius: 5px;
-  border-color: black;
-  border-width: 2px;
-  position: relative;
-  width: 50%;
-  float: none !important;
-  margin: 0 !important;
-  transition: 0.2s;
-}
-
-#yahoo{
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
-  animation-name: blj;
-  animation-duration: 0.75s;
-  position: absolute;
-  visibility: hidden;
-}
-
-@keyframes blj{
-  0%{ left: 0px; visibility: visible;}
-  10%{ left: 5px; visibility: visible;}
-  15%{ left: 15px; visibility: visible;}
-  20%{ left: 5px; visibility: visible;}
-  25%{ left: 15px; visibility: visible;}
-  30%{ left: 5px; visibility: visible;}
-  35%{ left: 15px; visibility: visible;}
-  40%{ left: 5px; visibility: visible;}
-  45%{ left: 15px; visibility: visible;}
-  50%{ left: 5px; visibility: visible;}
-  60%{ left: 30px; visibility: visible;}
-  70%{ left: 40px; visibility: visible;}
-  80%{ left: 80px; visibility: visible;}
-  90%{ left: 150px; visibility: visible;}
-  95%{ left: 300px; visibility: visible;}
-  100%{ left: 100%; visibility: visible;}
-}
-
-.row {
-  display: -webkit-flex;
-  display: flex;
-  margin-left: 0px;  
-}
-@media (max-width: 600px) {
-  .row {
-    -webkit-flex-direction: column;
-    flex-direction: column;
-   }
-}
-
-.column {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  padding: 10px;
-  /*height: 300px;*/
-  text-align: center;
-  font-family: roboto;
-  text-shadow: none;
-}
-
-.blob{
-  background-color: #ff0000dd;
-  border-style: solid;
-  border-radius: 4px;
-  border-width: 2px;
-  border-color: white;
-  padding: 10px;
-  margin: 10px;
-  /*width: 30%;*/
-  height: 325px;
-  font-family: "Roboto";
-}
-
-.blab{
-  background-color: #ff0000dd;
-  border-style: solid;
-  border-radius: 4px;
-  border-width: 2px;
-  border-color: white;
-  padding: 10px;
-  margin: 10px;
-  width: 100%;
-  height: 170px;
-  font-family: "Roboto";
-  text-shadow: none;
-  text-align: center;
-}
-
-.blob img{
-  float: left;
-  margin-right: 30px;
-}
-
-.blob button{
-  margin: 5px;
-}
-
-.container-fluid{
-  padding: 20px 30px;
-}
-
-.header{
-	font-family: "mario";
-	font-size: 2em;
-	/*color: purple;*/
-  text-shadow: 3px 3px black;
-	text-align: center;
-}
-
-.content{
-  align-self: center;
-  margin: 10px;
-  padding: 10px;
-  border-radius: 5px;
-  background-color: rgba(255,255,255,0.3);
-  font-family: "mario";
-  text-shadow: 2px 2px #ffffff;
-  color: black;
-}
-
-.button2 {
-  border-color: white;
-  border-width: 1px;
-  border-style: solid;
-  border-radius: 4px;
-  background-color: black;
-  color: white;
-  text-align: center;
-  font-size: 20px;
-  font-weight: bold;
-  /*padding: 40px;*/
-  width: 230px;
-  transition: all 0.5s;
-  cursor: pointer;
-  /*margin: auto;*/
-  font-family: "roboto";
-  overflow: hidden;
-  height: 30px;
-}
-
-.button2 span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
-
-.button2:hover{
-  background-color: white;
-}
-
-.button2 span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -50px;
-  transition: 0.25s;
-}
-
-.button2 span:before {
-  position: absolute;
-  opacity: 0;
-  bottom: 0px;
-  left: -50px;
-  transition: 0.25s;
-}
-
-.button2:hover span {
-  padding-right: 25px;
-  color: red;
-}
-
-.button2:hover span:after {
-  opacity: 1;
-  right: 0px; 
-  color: red;
-}
-
-.button2:hover span:before {
-  opacity: 1;
-  left: -30px; 
-}
-
-.footerWrapper{
-  width: 100%;
-  position: absolute;
-}
-
-.footButton{
-  color: white;
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  padding-top: 5px;
-  padding-right: 5px;
-  padding-left: 5px;
-  margin-left: 10px;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  text-align: center;  
-  border-radius: 50px;
-  border-style: solid;
-  border-color: white;
-  border-width: 2px;
-  background-color: black;
-}
-
-.footButton:hover{
-  background-color: red;
-  transition: 0.25s;
+div.content-wrapper#bottom-half {
+    margin-bottom: 30px;
 }
 
 
-.footer {
-  background-color: black;
-  padding: 10px;
-  text-align: center;
-  font-size: 15px;
-  font-family: "Roboto";
-  color: white;
-  margin-left: 0px;
-  z-index: 10000000;
+div.header {
+    background: var(--background-alt);
+    height: 100px;
+}
+
+div.blob.mariobox {
+    cursor: default;
+}
+
+div.blob > h2.blob-header {
+    font-family: "Raleway";
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    height: auto;
+}
+
+.blob.wide > .blob-header {
+    width: 100%;
+}
+
+div.blob > span {
+    font-family: "Raleway";
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+    margin-top: 8px;
+    margin-bottom: 5px;
+}
+
+span#type {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.mario {
+    border: 2px solid var(--border-alt);
+    border-radius:  var(--border-radius);
+    margin-top: 5px;
+    height: 250px;
+}
+
+.button, select {
+    background-color: var(--background-alt);
+    font-size: 16px;
+}
+
+select {
+    width: 95% !important;
+
+}
+
+textarea#code {
+    font-family: "Inconsolata";
+    border-radius: var(--border-radius);
+    height: 500px;
+}
+
+hr {
+    width: 100%;
+}
+
+.accordion {
+    background-color: var(--background-alt);
+    border-radius: var(--border-radius);
+    color: var(--text);
+    font-family: "Roboto";
+    font-weight: bold;
+    font-size: 16px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    position: sticky;
+    transition: all 0.1s ease-in;
+}
+
+.accordion::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background-color: transparent;
+    transition: all 0.1s ease-in;
+    z-index: -1;
+    border-radius: var(--border-radius);
+}
+
+.accordion.open, .accordion.open::before{
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.accordion.open::before, .accordion:hover::before {
+    width: 100%;
+    opacity: 0.5;
+    background-color: var(--theme);
+}
+
+.accordion:after {
+    content: '\002B';
+    color: var(--text);
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+.open:after {
+    content: "\2212";  
+}
+
+.panel {
+    font-family: "Roboto";
+    padding: 0 18px;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    background-color: var(--background-alt);
+    text-shadow: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    text-align: left;
+    font-size: 16px;
+    border: none;
+    width: 100%;
+}
+
+.panel.expanded {
+    border: 1px solid var(--border);
+    max-height: 200px;
+}
+
+.foot-text.foot-text-big a {
+    color: #b20acb;
+    text-decoration: none;
+}
+
+.foot-text a {
+    color: var(--text);
+    text-decoration: none;
 }

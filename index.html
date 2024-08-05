@@ -1,126 +1,158 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>SM64 Colour Code Generator</title>
+    <head>
+        <title>SM64 Colour Code Generator</title>
 
-		<!-- Stylesheets, plus our favicon -->
-		<link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="https://the404.nl/css/controls.css">
+        <link rel="stylesheet" type="text/css" href="https://the404.nl/css/main.css">
+        <link rel="stylesheet" type="text/css" href="https://the404.nl/css/home.css">
+        <link rel="stylesheet" type="text/css" href="https://the404.nl/css/nav.css">
+        <link rel="stylesheet" type="text/css" href="css/style2.css">
 		<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-		<!-- For Chrome, which recently started ignoring the autoplay attribute of <audio>
-			They have some valid reasons for this, but blocking my yahoo sound effect is not one of them.
-			This is a decent workaround method, if anybody's interested. -->
-		<iframe src="img/yahoo.mp3" allow="autoplay" style="display:none" id="iframeAudio"></iframe>
-
-		<!-- Our local JS, as well as jQuery -->
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script type="text/javascript" src="js/app.js"></script>
-	</head>
-	<body id="body">		
-		<div class="header">
-			<!-- This is painful to look at. Sorry. -->
-			<h1>
-				<span style="color: red">S</span><span style="color: blue">u</span><span style="color: yellow">p</span><span style="color: blue">e</span><span style="color: green">r</span> <span style="color: blue">M</span><span style="color: green">a</span><span style="color: yellow">r</span><span style="color: red">i</span><span style="color: green">o</span> <span style="color: red">6</span><span style="color: red">4</span>
-			</h1>
-			<h6 style="color: lightblue;">
-				Colour Code Generator
-			</h6>
-		</div>
+    </head>
+    <body class="theme-light" onload="generate()">
+        <div class="header">
+            <!-- <div class="logo">SM64 Colour Code Generator</div> -->
+             <div class="logo">
+                    <div class="logo-big">
+                        <span style="color: crimson">S</span><span style="color: cornflowerblue">u</span><span style="color: gold">p</span><span style="color: cornflowerblue">e</span><span style="color: forestgreen">r</span> <span style="color: cornflowerblue">M</span><span style="color: forestgreen">a</span><span style="color: gold">r</span><span style="color: crimson">i</span><span style="color: forestgreen">o</span> <span style="color: red">6</span><span style="color: red">4</span> 
+                    </div>
+                    <div class="logo-small">
+                        <span style="color: white;">Colour Code Generator</span>
+                    </div>
+            </div>
+        </div>
 
-		<img id="yahoo" src="img/blj.png" width="300px">
+        <div class="content-wrapper" id="top-half">
+            <div class="content large">
+                <div class="blob mariobox noscale">
+                    <h2 class="blob-header">Hat & Shirt</h2>
+                    <img class="mario" id="cap" src="img/cap2.png" style="background-color: #ff0000">
+                    <span>Base Colour:</span>
+                    <input class="button" type="color" id="capBase" onchange="updateCap()" value="#ff0000">
+                    <span>Shadow Colour:</span>
+                    <input class="button" type="color" id="capShad" onchange="updateCap()" value="#7f0000">
+                </div>
+                <div class="blob mariobox noscale">
+                    <h2 class="blob-header">Face</h2>
+                    <img class="mario" id="face" src="img/face.png" style="background-color: #fcbf79">
+                    <span>Base Colour:</span>
+                    <input class="button" type="color" id="skinBase" onchange="updateFace()" value="#fcbf79">
+                    <span>Shadow Colour:</span>
+                    <input class="button" type="color" id="skinShad" onchange="updateFace()" value="#81603c">
+                </div>
+                <div class="blob mariobox noscale">
+                    <h2 class="blob-header">Gloves</h2>
+                    <img class="mario" id="gloves" src="img/gloves.png" style="background-color: #ffffff">
+                    <span>Base Colour:</span>
+                    <input class="button" type="color" id="glovesBase" onchange="updateGloves()" value="#ffffff">
+                    <span>Shadow Colour:</span>
+                    <input class="button" type="color" id="glovesShad" onchange="updateGloves()" value="#7f7f7f">
+                </div>
+                <div class="blob mariobox noscale">
+                    <h2 class="blob-header">Overalls</h2>
+                    <img class="mario" id="pants" src="img/overalls.png" style="background-color: #0000ff">
+                    <span>Base Colour:</span>
+                    <input class="button" type="color" id="pantsBase" onchange="updatePants()" value="#0000ff">
+                    <span>Shadow Colour:</span>
+                    <input class="button" type="color" id="pantsShad" onchange="updatePants()" value="#00007f">
+                </div>
+                <div class="blob mariobox noscale">
+                    <h2 class="blob-header">Hair</h2>
+                    <img class="mario" id="hair" src="img/hair.png" style="background-color: #730600;"> 
+                    <span>Base Colour:</span>
+                    <input class="button" type="color" id="hairBase" onchange="updateHair()" value="#730600">  
+                    <span>Shadow Colour:</span>
+                    <input class="button" type="color" id="hairShad" onchange="updateHair()" value="#390300">      
+                </div>
+                <div class="blob mariobox noscale">
+                    <h2 class="blob-header">Shoes</h2>
+                    <img class="mario" id="shoes" src="img/shoes.png" style="background-color: #701c0f">	
+                    <span>Base Colour:</span>
+                    <input class="button" type="color" id="shoesBase" onchange="updateShoes()" value="#701c0f">
+                    <span>Shadow Colour:</span>
+                    <input class="button" type="color" id="shoesShad" onchange="updateShoes()" value="#2f0e07">
+                </div>
+            </div>
+            <hr class="divider">
+            <div class="content small">
+                <div class="blob wide noscale">
+                    <h2 class="blob-header">Game Version:</h2>
+                    <select name="gameVer" id="gameVer" onchange="switchGameVersion()" class="button">
+                        <option value="ntsc-u">NTSC-U (North American)</option>
+                        <option value="ntsc-j">NTSC-J (Japanese)</option>
+                        <option value="pal">PAL (European)</option>
+                        <option value="shindou">Shindou (Japanese 1.1)</option>
+                        <option value="ique">iQue (Chinese)</option>
+                    </select>
+                    <h2 class="blob-header">Your Code:</h2>
+                    <textarea id="code" readonly></textarea>
+                    <span id="type">sus</span>
 
-		<div class="content" style="display: none">			
-			<br>
-			<div class="row">
-				<div class="column">
-					<div class="blob">
-						<h2>Hat and Shirt</h2>
-						<p>Select Colour:</p>
-						<input class="button2" type="color" id="capCol" onchange="updateCap()" value="#ff0000">
-						<br>
-						<img class="mario" id="cap" src="img/cap.png" style="background-color: red">
-					</div>
-					<div class="blob">
-						<h2>Overalls</h2>
-						<p>Select Colour:</p>
-						<input class="button2" type="color" id="pantsCol" onchange="updatePants()" value="#0000ff">
-						<br>
-						<img class="mario" id="pants" src="img/overalls.png" style="background-color: blue">
-					</div>	 
-				</div>
+                    <button class="button" onclick="copy()"><span>Copy to Clipboard</span></button>
+                    <button class="button" onclick="download()"><span>Download as .cht</span></button>
+                    <hr>
+                    <button class="button" onclick="reset()"><span>Reset Mario</span></button>
+                </div>
+            </div>
+        </div>
 
-				<div class="column">
-					<div class="blob">
-						<h2>Face</h2>
-						<p>Select Colour:</p>
-						<input class="button2" type="color" id="faceCol" onchange="updateFace()" value="#fcbf79">
-						<br>
-						<img class="mario" id="face" src="img/face.png" style="background-color: #fcbf79">	
-					</div>
+        <div class="content-wrapper" id="bottom-half">
+            <div class="content">
+                <div class="blob wide noscale">
+                    <h2 class="blob-header">How to use your code:</h2>
 
-					<div class="blob">
-						<h2>Hair</h2>
-						<p>Select Colour:</p>
-						<input class="button2" type="color" id="hairCol" onchange="updateHair()" value="#730600">
-						<br>
-						<img class="mario" id="hair" src="img/hair.png" style="background-color: #730600;">
-					</div>
-				</div>
-				
-				<div class="column">
-					<div class="blob">
-						<h2>Gloves</h2>
-						<p>Select Colour:</p>
-						<input class="button2" type="color" id="glovesCol" onchange="updateGloves()" value="#ffffff">
-						<br>
-						<img class="mario" id="gloves" src="img/gloves.png" style="background-color: white">
-					</div>	
+                    <button class="accordion">Project64</button>
+                    <div class="panel">
+                        <p>Open the Cheats menu from the top menu bar at <b>System >> Cheats</b>. <br>Click the arrow on the right hand side to open the cheat creation section. <br>Paste your code into the box labeled <b>"address,"</b> and give a name for the code in the <b>"Name"</b> box. <br>Click on <b>"Add Cheat,"</b> and it will appear in the list on the left hand side. <br>Now just check off the box beside it and Mario will be sporting his new look!</p>
+                    </div>
 
-					<div class="blob">
-						<h2>Shoes</h2>
-						<p>Select Colour:</p>
-						<input class="button2" type="color" id="shoesCol" onchange="updateShoes()" value="#701c0f">
-						<br>
-						<img class="mario" id="shoes" src="img/shoes.png" style="background-color: #701c0f">	
-					</div>
-				</div>			
+                    <button class="accordion">Parallel Launcher</button>
+                    <div class="panel">
+                        <p>Access the Quick Menu with F1, and scroll down to "Cheats". <br> Navigate to <b>"Load Cheat File (Append)"</b>, and select the <b>.cht</b> file you downloaded from here.<br>There should now be a new entry in the cheats list named <b>"Custom Colour"</b>, make sure it is enabled.<br><br>Alternatively, you can manually create a new cheat entry and copy-paste the code from here.</p>
+                    </div>
 
-				<div class="column">
-					<div class="blob" style="height: 660px;">
-						<h2>Your Code:</h2>
-						<button class="button2" onclick="generateUSA()"><span>Generate (NTSC-U)</span></button>
-						<button class="button2" onclick="generateJAP()"><span>Generate (NTSC-J)</span></button>
-						<button class="button2" onclick="generatePAL()"><span>Generate (PAL)</span></button>
-						<button class="button2" onclick="generateSHI()"><span>Generate (Shindou)</span></button>
-						<p id="type">Click one of the buttons above once you've chosen your colours!</p>
-						<textarea id="code" readonly></textarea>
-						<button class="button2" onclick="reset()"><span>Reset Mario</span></button>
-					</div>				
-				</div>
-			</div>
-			
-			<br>
-			
-			<div class="row">
-				<div class="blab">
-					<h2>How to use your code:</h2>
-					<p>After you hit the button to generate the code for the version of the game you're running, you'll have to add the code into your emulator as a new cheat code. In Project64, this can be done through the top menu bar at System>>Cheats. Click the arrow on the right hand side to open the cheat creation section. Paste your code into the box labeled "address," and give a name for the code in the "Name" box. Click on "Add Cheat," and it will appear in the list on the left hand side. Now just check off the box beside it and Mario will be sporting his new look!</p>
-				</div>
-			</div>
+                    <p>
+                        Recently, I've noticed some traffic to this page, and upon further inspection I've realized it's the first search result when looking for colour code generators.
+                        <br>
+                        I decided to clean things up a bit, so hopefully it's a little easier to use. 
+                        <br>
+                        <br>
+                        Of particular interest, this tool now properly supports shadow colours, as well as the Chinese iQue version! Please note that shadow colours are not currently rendered in the preview images.
+                        <br>
+                        <b>Enjoy!</b>
+                    </p>
 
-			<br>
-		</div>
+                    <script>
+                        //This script block is what allows the panels to expand and retract smoothly.
+                        var acc = document.getElementsByClassName("accordion");
+                        var i;
+    
+                        for (i = 0; i < acc.length; i++) {
+                          acc[i].addEventListener("click", function() {
+                            this.classList.toggle("open");
+                            var panel = this.nextElementSibling;
 
-		<div class="footer" style="display: none">
-			<span class="footButton" style="font-size:30px;cursor:pointer;left:0;" onclick="location.href = 'http://www.the404.nl';"><i class="fa fa-home"></i></span>
-			<p> 					
-				SM64 Colour Code Generator
-				<br>
-				Version 1.1.1 (03/10/19)
-				<br>
-				Credit and shoutouts to Simpleflips for the BLJ emote
-			</p>
-		</div>
-	</body>
+                            panel.classList.toggle("expanded");
+                            // if (panel.style.maxHeight){
+                            //   panel.style.maxHeight = null;
+                            // } else {
+                            //   panel.style.maxHeight = panel.scrollHeight + "px";
+                            // } 
+                          });
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer subtle">
+            <span class="foot-text foot-text-big"><a class="link" href="https://the404.nl">the404.nl</a></span>
+            <span class="foot-text"><a class="link" href="https://github.com/the404devs/sm64code">v2.0.0</a></span>
+            <span class="foot-text">2024-08-05</span>
+        </div>
+    </body>
 </html>
