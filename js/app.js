@@ -30,7 +30,7 @@ function download() {
 	cheats = 1
 	cheat0_desc = "Custom Colours"
 	cheat0_enable = false
-	cheat0_code = "${code.replaceAll("\n", ";")}"
+	cheat0_code = "${code.replaceAll("\n\n", ";").replaceAll("\n", ";")}"
 	`
 	const file = new Blob([basefile], { type: "txt" }); 
 	const filename = `sm64-color-code-${gameVersion}.cht`;
