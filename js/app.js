@@ -166,7 +166,7 @@ function generate(){
 	${memoryMappings[gameVersion].shoes.main[1]} ${shoe_base[2]}00
 	`;
 
-	document.getElementById("code").value = code.replaceAll("\t","").replace("\n", "");
+	document.getElementById("code").value = code.replaceAll("\t","").replace("\n", "").toUpperCase();
 
 	document.getElementById("type").innerHTML = `This code is for the <b>${descriptiveNames[gameVersion]}</b> version.`;
 
