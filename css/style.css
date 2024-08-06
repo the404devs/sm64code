@@ -44,6 +44,7 @@ body.theme-light {
     margin-left: 0;
     text-shadow: 3px 3px black;
     padding: 8px;
+    cursor: default;
 }
 
 .logo .logo-big {
@@ -88,6 +89,11 @@ div.blob > h2.blob-header {
     text-align: center;
     font-weight: bold;
     height: auto;
+    font-size: 24px;
+}
+
+div.blob.sidebar {
+    height: calc(100vh - 125px);
 }
 
 .blob.wide > .blob-header {
@@ -125,10 +131,26 @@ select {
 
 }
 
-textarea#code {
+textarea {
     font-family: "Inconsolata";
     border-radius: var(--border-radius);
     height: 500px;
+    max-width: 40%;
+    width: auto;
+    font-size: 16px;
+    line-height: 16px;
+    padding: 5px;
+    white-space: pre;
+    overflow-wrap: normal;
+    overflow-x: scroll;
+    text-align: right;
+}
+
+textarea#guide {
+    border: none;
+    background: transparent;
+    cursor: default;
+    text-align: left;
 }
 
 hr {
@@ -191,7 +213,7 @@ hr {
 .panel {
     font-family: "Roboto";
     padding: 0 18px;
-    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    border-radius: var(--border-radius);
     background-color: var(--background-alt);
     text-shadow: none;
     max-height: 0;
@@ -205,6 +227,7 @@ hr {
 
 .panel.expanded {
     border: 1px solid var(--border);
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
     max-height: 200px;
 }
 
