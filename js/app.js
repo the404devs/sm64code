@@ -298,8 +298,7 @@ function generate(){
 	${memoryMappings[gameVersion].shoes.shadow[0]} ${shoe_shad[0]}${shoe_shad[1]}
 	${memoryMappings[gameVersion].shoes.shadow[1]} ${shoe_shad[2]}00
 	${memoryMappings[gameVersion].shoes.main[0]} ${shoe_base[0]}${shoe_base[1]}
-	${memoryMappings[gameVersion].shoes.main[1]} ${shoe_base[2]}00
-	`;
+	${memoryMappings[gameVersion].shoes.main[1]} ${shoe_base[2]}00`;
 
 
 	document.getElementById("code").value = code.replaceAll("\t","").replace("\n", "").toUpperCase();
