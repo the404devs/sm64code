@@ -159,16 +159,18 @@ function copy() {
 }
 
 function download() {
+
+	const cheatName = prompt("Name for this colour code?", "My Colour Code");
 	const code = document.getElementById("code").value;
 
 	const basefile = `
 	cheats = 1
-	cheat0_desc = "Custom Colours"
-	cheat0_enable = false
+	cheat0_desc = "${cheatName}"
+	cheat0_enable = true
 	cheat0_code = "${code.replaceAll("\n\n", ";").replaceAll("\n", ";")}"
 	`
 	const file = new Blob([basefile], { type: "txt" }); 
-	const filename = `sm64-color-code-${gameVersion}.cht`;
+	const filename = `${cheatName}-${gameVersion}.cht`;
 	if (window.navigator.msSaveOrOpenBlob) // IE10+
 		window.navigator.msSaveOrOpenBlob(file, filename);
 	else { // Others
