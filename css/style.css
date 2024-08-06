@@ -63,6 +63,8 @@ body.theme-light {
 div.content {
     margin-bottom: 0;
     margin-top: 0;
+    align-content: space-evenly;
+    align-items: center;
 }
 
 div.content-wrapper#top-half {
@@ -73,14 +75,33 @@ div.content-wrapper#bottom-half {
     margin-bottom: 30px;
 }
 
+div.content-wrapper#bottom-half div.content div.blob {
+    max-width: unset;
+    padding: 20px;
+}
+
 
 div.header {
     background: var(--background-alt);
     height: 100px;
 }
 
-div.blob.mariobox {
+div.blob {
     cursor: default;
+    height: -webkit-fill-available;
+    align-items: flex-start;
+    max-width: 30%;
+}
+
+div.blob.mariobox {
+    height: min-content;
+    max-width: 420px;
+}
+
+
+div.blob.mariobox p {
+    text-align: center;
+    padding: 0 30px;
 }
 
 div.blob > h2.blob-header {
@@ -109,26 +130,77 @@ div.blob > span {
     margin-bottom: 5px;
 }
 
+div.blob#color-selectors {
+    display: block;
+    text-align: center;
+    padding: 15px;
+    padding-bottom: 20px;
+}
+
+div.blob#color-selectors > h2:not(:first-of-type) {
+    padding-top: 5px;
+    margin-top: 15px;
+    border-top: 1px solid var(--border);
+}
+
+@media (max-width: 1000px) {
+    div.content {
+        flex-direction: column;
+    }
+
+    div.blob {
+        max-width: 100%;
+    }
+}
+
+.control-group > span {
+    font-family: "Inconsolata";
+    font-size: 14px;
+}
+
+label {
+    width: 150px;
+    display: inline-block;
+    text-align: right;
+}
+
 span#type {
     font-size: 14px;
     font-weight: normal;
 }
 
-.mario {
-    border: 2px solid var(--border-alt);
-    border-radius:  var(--border-radius);
-    margin-top: 5px;
-    height: 250px;
+.image-container {
+    /* border: 2px solid var(--border); */
+    /* border-radius:  var(--border-radius); */
+    margin-top: 15px;
+    height: 350px;
+    position: relative;
+    width: 410px;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    /* border-radius:  var(--border-radius); */
+    height: 100%;
+    position: absolute;
+    /* transition: 0.1s all; */
 }
 
 .button, select {
     background-color: var(--background-alt);
     font-size: 16px;
+    margin: 0 5px;
 }
 
 select {
     width: 95% !important;
+}
 
+input[type=color] {
+    width: auto;
+    min-width: 50px;
+    margin-left: 10px;
 }
 
 textarea {

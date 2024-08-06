@@ -12,73 +12,110 @@
 
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script type="text/javascript" src="js/app.js"></script>
+		<script type="text/javascript" src="js/magic-filter.js"></script>
     </head>
-    <body class="theme-light" onload="generate()">
+    <body class="theme-light" onload="reset();">
         <div class="header">
             <!-- <div class="logo">SM64 Colour Code Generator</div> -->
              <div class="logo">
-                    <div class="logo-big">
-                        <span style="color: crimson">S</span><span style="color: cornflowerblue">u</span><span style="color: gold">p</span><span style="color: cornflowerblue">e</span><span style="color: forestgreen">r</span> <span style="color: cornflowerblue">M</span><span style="color: forestgreen">a</span><span style="color: gold">r</span><span style="color: crimson">i</span><span style="color: forestgreen">o</span> <span style="color: red">64</span> 
-                    </div>
-                    <div class="logo-small">
-                        <span style="color: white;">Colour Code Generator</span>
-                    </div>
+                <div class="logo-big">
+                    <span style="color: crimson">S</span><span style="color: cornflowerblue">u</span><span style="color: gold">p</span><span style="color: cornflowerblue">e</span><span style="color: forestgreen">r</span> <span style="color: cornflowerblue">M</span><span style="color: forestgreen">a</span><span style="color: gold">r</span><span style="color: crimson">i</span><span style="color: forestgreen">o</span> <span style="color: red">64</span> 
+                </div>
+                <div class="logo-small">
+                    <span style="color: white;">Colour Code Generator</span>
+                </div>
             </div>
         </div>
 
         <div class="content-wrapper" id="top-half">
-            <div class="content large">
-                <div class="blob mariobox noscale">
+            <div class="content">
+                <div class="blob noscale" id="color-selectors">
                     <h2 class="blob-header">Hat & Shirt</h2>
-                    <img class="mario" id="cap" src="img/cap.png" style="background-color: #ff0000">
-                    <span>Base Colour:</span>
-                    <input class="button" type="color" id="capBase" onchange="updateCap()" value="#ff0000">
-                    <span>Shadow Colour:</span>
-                    <input class="button" type="color" id="capShad" onchange="updateCap()" value="#7f0000">
-                </div>
-                <div class="blob mariobox noscale">
+                    <div class="control-group">
+                        <label>Base Colour:</label>
+                        <input class="button mario-color" type="color" id="cap-base" onchange="updatePreview(this.id)" value="#ff0000">
+                        <span id="cap-base-label"></span>
+                        <br>
+                        <label>Shadow Colour:</label>
+                        <input class="button mario-color" type="color" id="cap-shadow" onchange="updatePreview(this.id)" value="#7f0000">
+                        <span id="cap-shadow-label"></span>
+                    </div>
                     <h2 class="blob-header">Face</h2>
-                    <img class="mario" id="face" src="img/face.png" style="background-color: #fcbf79">
-                    <span>Base Colour:</span>
-                    <input class="button" type="color" id="skinBase" onchange="updateFace()" value="#fcbf79">
-                    <span>Shadow Colour:</span>
-                    <input class="button" type="color" id="skinShad" onchange="updateFace()" value="#81603c">
-                </div>
-                <div class="blob mariobox noscale">
+                    <div class="control-group">
+                        <label>Base Colour:</label>
+                        <input class="button mario-color" type="color" id="skin-base" onchange="updatePreview(this.id)" value="#fcbf79">
+                        <span id="skin-base-label"></span>
+                        <br>
+                        <label>Shadow Colour:</label>
+                        <input class="button mario-color" type="color" id="skin-shadow" onchange="updatePreview(this.id)" value="#81603c">
+                        <span id="skin-shadow-label"></span>
+                    </div>                   
                     <h2 class="blob-header">Gloves</h2>
-                    <img class="mario" id="gloves" src="img/gloves.png" style="background-color: #ffffff">
-                    <span>Base Colour:</span>
-                    <input class="button" type="color" id="glovesBase" onchange="updateGloves()" value="#ffffff">
-                    <span>Shadow Colour:</span>
-                    <input class="button" type="color" id="glovesShad" onchange="updateGloves()" value="#7f7f7f">
-                </div>
-                <div class="blob mariobox noscale">
+                    <div class="control-group">
+                        <label>Base Colour:</label>
+                        <input class="button mario-color" type="color" id="gloves-base" onchange="updatePreview(this.id)" value="#ffffff">
+                        <span id="gloves-base-label"></span>
+                        <br>
+                        <label>Shadow Colour:</label>
+                        <input class="button mario-color" type="color" id="gloves-shadow" onchange="updatePreview(this.id)" value="#7f7f7f">
+                        <span id="gloves-shadow-label"></span>
+                    </div>
                     <h2 class="blob-header">Overalls</h2>
-                    <img class="mario" id="pants" src="img/overalls.png" style="background-color: #0000ff">
-                    <span>Base Colour:</span>
-                    <input class="button" type="color" id="pantsBase" onchange="updatePants()" value="#0000ff">
-                    <span>Shadow Colour:</span>
-                    <input class="button" type="color" id="pantsShad" onchange="updatePants()" value="#00007f">
-                </div>
-                <div class="blob mariobox noscale">
+                    <div class="control-group">
+                        <label>Base Colour:</label>
+                        <input class="button mario-color" type="color" id="overalls-base" onchange="updatePreview(this.id)" value="#0000ff">
+                        <span id="overalls-base-label"></span>
+                        <br>
+                        <label>Shadow Colour:</label>
+                        <input class="button mario-color" type="color" id="overalls-shadow" onchange="updatePreview(this.id)" value="#00007f">
+                        <span id="overalls-shadow-label"></span>
+                    </div>
                     <h2 class="blob-header">Hair</h2>
-                    <img class="mario" id="hair" src="img/hair.png" style="background-color: #730600;"> 
-                    <span>Base Colour:</span>
-                    <input class="button" type="color" id="hairBase" onchange="updateHair()" value="#730600">  
-                    <span>Shadow Colour:</span>
-                    <input class="button" type="color" id="hairShad" onchange="updateHair()" value="#390300">      
+                    <div class="control-group">
+                        <label>Base Colour:</label>
+                        <input class="button mario-color" type="color" id="hair-base" onchange="updatePreview(this.id)" value="#730600">
+                        <span id="hair-base-label"></span>
+                        <br>
+                        <label>Shadow Colour:</label>
+                        <input class="button mario-color" type="color" id="hair-shadow" onchange="updatePreview(this.id)" value="#390300">  
+                        <span id="hair-shadow-label"></span>
+                    </div>
+                    <h2 class="blob-header">Shoes</h2>
+                    <div class="control-group">
+                        <label>Base Colour:</label>
+                        <input class="button mario-color" type="color" id="shoes-base" onchange="updatePreview(this.id)" value="#701c0f">
+                        <span id="shoes-base-label"></span>
+                        <br>
+                        <label>Shadow Colour:</label>
+                        <input class="button mario-color" type="color" id="shoes-shadow" onchange="updatePreview(this.id)" value="#2f0e07">
+                        <span id="shoes-shadow-label"></span>
+                    </div>
                 </div>
                 <div class="blob mariobox noscale">
-                    <h2 class="blob-header">Shoes</h2>
-                    <img class="mario" id="shoes" src="img/shoes.png" style="background-color: #701c0f">	
-                    <span>Base Colour:</span>
-                    <input class="button" type="color" id="shoesBase" onchange="updateShoes()" value="#701c0f">
-                    <span>Shadow Colour:</span>
-                    <input class="button" type="color" id="shoesShad" onchange="updateShoes()" value="#2f0e07">
+                    <h2 class="blob-header">Preview</h2>
+                    <div class="image-container">
+                        <img class="image-overlay" id="cap-base-img" src="img/cap-base.png">
+                        <img class="image-overlay" id="cap-shadow-img" src="img/cap-shadow.png">
+                        <img class="image-overlay" id="skin-base-img" src="img/skin-base.png">
+                        <img class="image-overlay" id="skin-shadow-img" src="img/skin-shadow.png">
+                        <img class="image-overlay" id="gloves-base-img" src="img/gloves-base.png">
+                        <img class="image-overlay" id="gloves-shadow-img" src="img/gloves-shadow.png">
+                        <img class="image-overlay" id="overalls-base-img" src="img/overalls-base.png">
+                        <img class="image-overlay" id="overalls-shadow-img" src="img/overalls-shadow.png">
+                        <img class="image-overlay" id="hair-base-img" src="img/hair-base.png">
+                        <img class="image-overlay" id="hair-shadow-img" src="img/hair-shadow.png">
+                        <img class="image-overlay" id="shoes-base-img" src="img/shoes-base.png">
+                        <img class="image-overlay" id="shoes-shadow-img" src="img/shoes-shadow.png">
+                        <img class="image-overlay textures" id="textures" src="img/textures.png">
+                    </div>
+                    <p>
+                        This preview may not be 100% accurate to in-game colours due to some slight randomness in the Mario-dyeing process.
+                        <br>
+                        <br>
+                        Bright shadow colours tend to overpower the base colour.
+                    </p>
+                    <button class="button" onclick="reset()"><span>Reset Mario</span></button>
                 </div>
-            </div>
-            <hr class="divider">
-            <div class="content small">
                 <div class="blob wide noscale">
                     <h2 class="blob-header">Game Version:</h2>
                     <select name="gameVer" id="gameVer" onchange="switchGameVersion()" class="button">
@@ -95,10 +132,11 @@
 
                     <button class="button" onclick="copy()"><span>Copy to Clipboard</span></button>
                     <button class="button" onclick="download()"><span>Download as .cht</span></button>
-                    <hr>
-                    <button class="button" onclick="reset()"><span>Reset Mario</span></button>
                 </div>
             </div>
+            <!-- <div class="content small">
+                
+            </div> -->
         </div>
 
         <div class="content-wrapper" id="bottom-half">
@@ -152,8 +190,8 @@
 
         <div class="footer subtle">
             <span class="foot-text foot-text-big"><a class="link" href="https://the404.nl">the404.nl</a></span>
-            <span class="foot-text"><a class="link" href="https://github.com/the404devs/sm64code">v2.0.0</a></span>
-            <span class="foot-text">2024-08-05</span>
+            <span class="foot-text"><a class="link" href="https://github.com/the404devs/sm64code">v2.0.1</a></span>
+            <span class="foot-text">2024-08-06</span>
         </div>
     </body>
 </html>

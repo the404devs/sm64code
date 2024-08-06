@@ -9,6 +9,33 @@ const descriptiveNames = {
 	"ique": "iQue (Chinese)"
 }
 
+const defaultColors = {
+	"cap": {
+		"base": "#ff0000",
+		"shadow": "#7f0000"
+	},
+	"hair": {
+		"base": "#730600",
+		"shadow": "#390300"
+	},
+	"skin": {
+		"base": "#fcbf79",
+		"shadow": "#81603c"
+	},
+	"gloves": {
+		"base": "#ffffff",
+		"shadow": "#7f7f7f"
+	},
+	"overalls": {
+		"base": "#0000ff",
+		"shadow": "#00007f"
+	},
+	"shoes": {
+		"base": "#701c0f",
+		"shadow": "#2f0e07"
+	}
+}
+
 const memoryMappings = {
 	"ntsc-u": {
 		"hat_shirt": {
@@ -142,7 +169,7 @@ const memoryMappings = {
 	}
 }
 
-const guideText = "┐ Hat & Shirt\n│\n│\n┘\n\n┐ Hair\n│\n│\n┘\n\n┐ Face\n│\n│\n┘\n\n┐ Gloves\n│\n│\n┘\n\n┐ Overalls\n│\n│\n┘\n\n┐ Shoes\n│\n│\n┘";
+const guideText = "┬ Hat & Shirt\n│\n│\n┘\n\n┬ Face\n│\n│\n┘\n\n┬ Gloves\n│\n│\n┘\n\n┬ Overalls\n│\n│\n┘\n\n┬ Hair\n│\n│\n┘\n\n┬ Shoes\n│\n│\n┘";
 
 function switchGameVersion() {
 	gameVersion = document.getElementById("gameVer").value;
@@ -190,85 +217,47 @@ function download() {
 /*Image colour update code*/
 
 function reset(){
-	document.getElementById("capBase").value = "#ff0000";
-	document.getElementById("pantsBase").value = "#0000ff";
-	document.getElementById("skinBase").value = "#fcbf79";
-	document.getElementById("hairBase").value = "#730600";
-	document.getElementById("glovesBase").value = "#ffffff";
-	document.getElementById("shoesBase").value = "#701c0f";
+	document.querySelectorAll(".mario-color").forEach(elem => {
+		const [part, type] = elem.id.split("-");
+		elem.value = defaultColors[part][type];
+		updatePreview(elem.id);
+		console.log(elem.id, elem.value)
+	}); 
 
-	document.getElementById("capShad").value = "#7f0000";
-	document.getElementById("pantsShad").value = "#00007f";
-	document.getElementById("skinShad").value = "#81603c";
-	document.getElementById("hairShad").value = "#390300";
-	document.getElementById("glovesShad").value = "#7f7f7f";
-	document.getElementById("shoesShad").value = "#2f0e07";
-
-	updateCap();
-	updatePants();
-	updateFace();
-	updateHair();
-	updateGloves();
-	updateShoes();
-
-	generate()
-}
-
-function updateCap(){
-	var newCol = document.getElementById("capBase").value;
-	document.getElementById("cap").style.backgroundColor = newCol;
 	generate();
 }
 
-function updatePants(){
-	var newCol = document.getElementById("pantsBase").value;
-	document.getElementById("pants").style.backgroundColor = newCol;
-	generate();
-}
 
-function updateFace(){
-	var newCol = document.getElementById("skinBase").value;
-	document.getElementById("face").style.backgroundColor = newCol;
-	generate();
-}
-
-function updateHair(){
-	var newCol = document.getElementById("hairBase").value;
-	document.getElementById("hair").style.backgroundColor = newCol;
-	generate();
-}
-
-function updateGloves(){
-	var newCol = document.getElementById("glovesBase").value;
-	document.getElementById("gloves").style.backgroundColor = newCol;
-	generate();
-}
-
-function updateShoes(){
-	var newCol = document.getElementById("shoesBase").value;
-	document.getElementById("shoes").style.backgroundColor = newCol;
+function updatePreview(id) {
+	const color = document.getElementById(id).value;
+	const target = id+"-img";
+	const label = id+"-label";
+	const filter = getFilter(color);
+	document.getElementById(target).style.filter = filter;
+	document.getElementById(label).textContent = color;
+	console.log(filter);
 	generate();
 }
 
 function generate(){
 
-	const hat_base = document.getElementById("capBase").value.replace("#","").match(/(..?)/g);
-	const hat_shad = document.getElementById("capShad").value.replace("#","").match(/(..?)/g);
+	const hat_base = document.getElementById("cap-base").value.replace("#","").match(/(..?)/g);
+	const hat_shad = document.getElementById("cap-shadow").value.replace("#","").match(/(..?)/g);
 
-	const hair_base = document.getElementById("hairBase").value.replace("#","").match(/(..?)/g);
-	const hair_shad = document.getElementById("hairShad").value.replace("#","").match(/(..?)/g);
+	const hair_base = document.getElementById("hair-base").value.replace("#","").match(/(..?)/g);
+	const hair_shad = document.getElementById("hair-shadow").value.replace("#","").match(/(..?)/g);
 
-	const skin_base = document.getElementById("skinBase").value.replace("#","").match(/(..?)/g);
-	const skin_shad = document.getElementById("skinShad").value.replace("#","").match(/(..?)/g);
+	const skin_base = document.getElementById("skin-base").value.replace("#","").match(/(..?)/g);
+	const skin_shad = document.getElementById("skin-shadow").value.replace("#","").match(/(..?)/g);
 
-	const glove_base = document.getElementById("glovesBase").value.replace("#","").match(/(..?)/g);
-	const glove_shad = document.getElementById("glovesShad").value.replace("#","").match(/(..?)/g);
+	const glove_base = document.getElementById("gloves-base").value.replace("#","").match(/(..?)/g);
+	const glove_shad = document.getElementById("gloves-shadow").value.replace("#","").match(/(..?)/g);
 
-	const pants_base = document.getElementById("pantsBase").value.replace("#","").match(/(..?)/g);
-	const pants_shad = document.getElementById("pantsShad").value.replace("#","").match(/(..?)/g);
+	const overalls_base = document.getElementById("overalls-base").value.replace("#","").match(/(..?)/g);
+	const overalls_shad = document.getElementById("overalls-shadow").value.replace("#","").match(/(..?)/g);
 
-	const shoe_base = document.getElementById("shoesBase").value.replace("#","").match(/(..?)/g);
-	const shoe_shad = document.getElementById("shoesShad").value.replace("#","").match(/(..?)/g);
+	const shoe_base = document.getElementById("shoes-base").value.replace("#","").match(/(..?)/g);
+	const shoe_shad = document.getElementById("shoes-shadow").value.replace("#","").match(/(..?)/g);
 	// alert(hat_base[0])
 
 	const code = `
@@ -276,11 +265,6 @@ function generate(){
 	${memoryMappings[gameVersion].hat_shirt.shadow[1]} ${hat_shad[2]}00
 	${memoryMappings[gameVersion].hat_shirt.main[0]} ${hat_base[0]}${hat_base[1]}
 	${memoryMappings[gameVersion].hat_shirt.main[1]} ${hat_base[2]}00
-
-	${memoryMappings[gameVersion].hair.shadow[0]} ${hair_shad[0]}${hair_shad[1]}
-	${memoryMappings[gameVersion].hair.shadow[1]} ${hair_shad[2]}00
-	${memoryMappings[gameVersion].hair.main[0]} ${hair_base[0]}${hair_base[1]}
-	${memoryMappings[gameVersion].hair.main[1]} ${hair_base[2]}00
 
 	${memoryMappings[gameVersion].skin.shadow[0]} ${skin_shad[0]}${skin_shad[1]}
 	${memoryMappings[gameVersion].skin.shadow[1]} ${skin_shad[2]}00
@@ -292,10 +276,15 @@ function generate(){
 	${memoryMappings[gameVersion].gloves.main[0]} ${glove_base[0]}${glove_base[1]}
 	${memoryMappings[gameVersion].gloves.main[1]} ${glove_base[2]}00
 
-	${memoryMappings[gameVersion].overalls.shadow[0]} ${pants_shad[0]}${pants_shad[1]}
-	${memoryMappings[gameVersion].overalls.shadow[1]} ${pants_shad[2]}00
-	${memoryMappings[gameVersion].overalls.main[0]} ${pants_base[0]}${pants_base[1]}
-	${memoryMappings[gameVersion].overalls.main[1]} ${pants_base[2]}00
+	${memoryMappings[gameVersion].overalls.shadow[0]} ${overalls_shad[0]}${overalls_shad[1]}
+	${memoryMappings[gameVersion].overalls.shadow[1]} ${overalls_shad[2]}00
+	${memoryMappings[gameVersion].overalls.main[0]} ${overalls_base[0]}${overalls_base[1]}
+	${memoryMappings[gameVersion].overalls.main[1]} ${overalls_base[2]}00
+
+	${memoryMappings[gameVersion].hair.shadow[0]} ${hair_shad[0]}${hair_shad[1]}
+	${memoryMappings[gameVersion].hair.shadow[1]} ${hair_shad[2]}00
+	${memoryMappings[gameVersion].hair.main[0]} ${hair_base[0]}${hair_base[1]}
+	${memoryMappings[gameVersion].hair.main[1]} ${hair_base[2]}00
 
 	${memoryMappings[gameVersion].shoes.shadow[0]} ${shoe_shad[0]}${shoe_shad[1]}
 	${memoryMappings[gameVersion].shoes.shadow[1]} ${shoe_shad[2]}00
