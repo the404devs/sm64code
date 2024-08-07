@@ -227,6 +227,16 @@ function reset(){
 	generate();
 }
 
+function randomize() {
+	document.querySelectorAll(".mario-color").forEach(elem => {
+		elem.value = "#000000".replace(/0/g,function(){return (~~(Math.random()*16)).toString(16);});
+		updatePreview(elem.id);
+		console.log(elem.id, elem.value)
+	}); 
+
+	generate();
+}
+
 
 function updatePreview(id) {
 	const color = document.getElementById(id).value;

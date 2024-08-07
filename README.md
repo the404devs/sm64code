@@ -5,9 +5,10 @@ A tool that creates action replay codes to change mario's colours in sm64
 
 https://sm64code.the404.nl
 
-### *2.0.1 (06/06/2024)*
+### *2.0.1 (08/06/2024)*
 ------------------------
 - New Mario rendering system, now showing all base and shadow colours on a single Mario
+- Added a randomize button
 
 ### *2.0.0 (08/05/2024)*
 ------------------------
