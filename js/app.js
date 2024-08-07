@@ -1,6 +1,8 @@
 
 let gameVersion = "ntsc-u";
 
+let timer;
+
 const descriptiveNames = {
 	"ntsc-u": "NTSC-U (American)",
 	"ntsc-j": "NTSC-J (Japanese)",
@@ -10,6 +12,7 @@ const descriptiveNames = {
 }
 
 const defaultColors = {
+	"name": "Default Mario",
 	"cap": {
 		"base": "#ff0000",
 		"shadow": "#7f0000"
@@ -35,6 +38,8 @@ const defaultColors = {
 		"shadow": "#2f0e07"
 	}
 }
+
+let currentColorModel = defaultColors;
 
 const memoryMappings = {
 	"ntsc-u": {
@@ -214,6 +219,92 @@ function download() {
 	}
 }
 
+function save() {
+	const uuid = "sm64cc-" + crypto.randomUUID();
+	localStorage.setItem(uuid, JSON.stringify(currentColorModel));
+	readLocalStorage();
+
+	const menu = document.getElementById("color-menu");
+	menu.classList.add("shown");
+}
+
+function updateName(str) {
+	currentColorModel.name = str;
+}
+
+function readLocalStorage() {
+	const menu = document.getElementById("color-list");
+	menu.replaceChildren();
+	for (let i = 0; i < localStorage.length; i++) {
+		const key = localStorage.key(i);
+		
+		if (key.startsWith("sm64cc-")) {
+			const code = JSON.parse(localStorage.getItem(key));
+			console.log(code)
+
+			const colorEntry = document.createElement("div");
+			colorEntry.classList.add("color-entry");
+
+			colorEntry.innerHTML = `
+				<span class="color-header">${code.name}</span>
+				<div class="color-options">
+            		<a onclick="load(this.parentElement.parentElement.getAttribute('uuid'))"><i class="fas fa-cloud-arrow-up" aria-hidden="true"></i>Load</a>
+            		<a onclick="remove(this.parentElement.parentElement.getAttribute('uuid'))"><i class="fas fa-trash-can" aria-hidden="true"></i>Delete</a>
+				</div>
+			`;
+
+
+			
+			let allColors = [];
+			Object.keys(code).forEach(part => {
+				if (part != "name") {
+					allColors.push(code[part]["base"], code[part]["shadow"])
+				}
+			});
+
+
+			colorEntry.style.background = `linear-gradient(45deg, ${allColors.toString()})`
+
+			colorEntry.setAttribute("uuid", key);
+
+			menu.appendChild(colorEntry);
+
+			//todo: spawn menu entries here
+		}
+	}
+}
+
+function remove(uuid) {
+	localStorage.removeItem(uuid);
+
+	readLocalStorage();
+}
+
+function load(uuid) {
+	console.log(uuid)
+	currentColorModel = JSON.parse(localStorage.getItem(uuid));
+
+	document.querySelectorAll(".mario-color").forEach(elem => {
+		const [part, type] = elem.id.split("-");
+		elem.value = currentColorModel[part][type];
+		updatePreview(elem.id);
+		// console.log(elem.id, elem.value)
+	}); 
+
+	document.getElementById("code-name").value = currentColorModel["name"];
+
+	generate();
+}
+
+function star() {
+	if (!timer) {
+		timer = setInterval(randomize, 50);
+	} else {
+		clearInterval(timer);
+		timer = null;
+	}
+}
+
 /*Image colour update code*/
 
 function reset(){
@@ -221,36 +312,67 @@ function reset(){
 		const [part, type] = elem.id.split("-");
 		elem.value = defaultColors[part][type];
 		updatePreview(elem.id);
-		console.log(elem.id, elem.value)
+		// console.log(elem.id, elem.value)
 	}); 
 
+	document.getElementById("code-name").value = defaultColors["name"];
+
 	generate();
+}
+
+function toggleColorMenu() {
+	document.getElementById("color-menu").classList.toggle("shown");
 }
 
 function randomize() {
 	document.querySelectorAll(".mario-color").forEach(elem => {
 		elem.value = "#000000".replace(/0/g,function(){return (~~(Math.random()*16)).toString(16);});
 		updatePreview(elem.id);
-		console.log(elem.id, elem.value)
+		// console.log(elem.id, elem.value)
 	}); 
 
 	generate();
 }
 
+function getCodeName() {
+	const field = document.getElementById("code-name");
+	field.classList.remove("error");
+	void field.offsetWidth; // telementrigger reflow
+	const name = field.value;
+	if (name) {
+		return name;
+	} else {
+		field.classList.toggle("error");
+		return null;
+	}
+}
 
 function updatePreview(id) {
 	const color = document.getElementById(id).value;
 	const target = id+"-img";
 	const label = id+"-label";
+	const [part, type] = id.split("-");
+	currentColorModel[part][type] = color;
 	const filter = getFilter(color);
 	document.getElementById(target).style.filter = filter;
 	document.getElementById(label).textContent = color;
-	console.log(filter);
+
+
+
+	// console.log(filter);
 	generate();
 }
 
-function generate(){
 
+function getCurrentColorModel() {
+	document.querySelectorAll(".mario-color").forEach(elem => {
+		const [part, type] = elem.id.split("-");
+		currentColorModel[part][type] = elem.value;
+	}); 
+}
+
+function generate(){
+	//TODO: use currentColorModel
 	const hat_base = document.getElementById("cap-base").value.replace("#","").match(/(..?)/g);
 	const hat_shad = document.getElementById("cap-shadow").value.replace("#","").match(/(..?)/g);
 

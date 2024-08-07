@@ -9,15 +9,18 @@
         <link rel="stylesheet" type="text/css" href="https://the404.nl/css/nav.css">
         <link rel="stylesheet" type="text/css" href="css/style.css">
 		<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
-
+        <script src="https://kit.fontawesome.com/a79a931136.js" crossorigin="anonymous"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script type="text/javascript" src="js/app.js"></script>
 		<script type="text/javascript" src="js/magic-filter.js"></script>
     </head>
-    <body class="theme-light" onload="reset();">
+    <body class="theme-light" onload="readLocalStorage(); reset();">
         <div class="header">
             <!-- <div class="logo">SM64 Colour Code Generator</div> -->
-             <div class="logo">
+            <!-- <div class="star" onclick="star()">
+                <img src="img/star.gif">
+            </div> -->
+            <div class="logo">
                 <div class="logo-big">
                     <span style="color: crimson">S</span><span style="color: cornflowerblue">u</span><span style="color: gold">p</span><span style="color: cornflowerblue">e</span><span style="color: forestgreen">r</span> <span style="color: cornflowerblue">M</span><span style="color: forestgreen">a</span><span style="color: gold">r</span><span style="color: crimson">i</span><span style="color: forestgreen">o</span> <span style="color: red">64</span> 
                 </div>
@@ -25,6 +28,20 @@
                     <span style="color: white;">Colour Code Generator</span>
                 </div>
             </div>
+
+
+            <span class="menu-button" onclick="toggleColorMenu()" title="View Saved Colours">
+                <i class="open-icon fas fa-palette" aria-hidden="true"></i>
+            </span>
+        </div>
+
+        <div id="color-menu" class="sidenav right">
+            <span class="menu-button" onclick="toggleColorMenu()" title="Close">
+                <i class="open-icon fas fa-times" aria-hidden="true"></i>
+            </span>
+            <hr>
+            <h2 class="blob-header">Saved Colours</h2>
+            <div id="color-list"></div>
         </div>
 
         <div class="content-wrapper" id="top-half">
@@ -94,7 +111,7 @@
                     <button class="button" onclick="randomize()"><span>Randomize!</span></button>
 
                 </div>
-                <div class="blob mariobox noscale">
+                <div class="blob noscale" id="preview-window">
                     <h2 class="blob-header">Preview</h2>
                     <div class="image-container">
                         <img class="image-overlay" id="cap-base-img" src="img/cap-base.png">
@@ -128,18 +145,19 @@
                         <option value="shindou">Shindou (Japanese 1.1)</option>
                         <option value="ique">iQue (Chinese)</option>
                     </select>
+                    <hr class="divider">
                     <h2 class="blob-header">Your Code:</h2>
+                    <input id="code-name" type="text" placeholder="Enter a name..." onchange="updateName(this.value)" maxlength="24">
                     <textarea id="code" readonly></textarea>
                     <textarea id="guide" readonly></textarea>
                     <span id="type">sus</span>
 
                     <button class="button" onclick="copy()"><span>Copy to Clipboard</span></button>
                     <button class="button" onclick="download()"><span>Download as .cht</span></button>
+                    <hr class="divider">
+                    <button class="button" onclick="save()"><span>Save</span></button>
                 </div>
             </div>
-            <!-- <div class="content small">
-                
-            </div> -->
         </div>
 
         <div class="content-wrapper" id="bottom-half">
@@ -191,10 +209,12 @@
             </div>
         </div>
 
+        
+
         <div class="footer subtle">
             <span class="foot-text foot-text-big"><a class="link" href="https://the404.nl">the404.nl</a></span>
-            <span class="foot-text"><a class="link" href="https://github.com/the404devs/sm64code">v2.0.1</a></span>
-            <span class="foot-text">2024-08-06</span>
+            <span class="foot-text"><a class="link" href="https://github.com/the404devs/sm64code">v2.0.2</a></span>
+            <span class="foot-text">2024-08-07</span>
         </div>
     </body>
 </html>

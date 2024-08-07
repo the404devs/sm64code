@@ -1,7 +1,7 @@
 body.theme-light {
-    --background: #f1f5f8;
+    --background: #aab6c259;
     --background-alt: #000000b0;
-    --background-image: url("../img/wallpaper.jpg");
+    --background-image: url("../img/wallpaper-blur.jpg");
     --background-gradient: linear-gradient(0deg, #cae8ff 0%, #ffffff 90%);
     --border-alt: rgba(0,0,0,0);
     --border: rgba(255, 255, 255, 0.5);
@@ -23,8 +23,8 @@ body.theme-light {
 
     background: var(--background-image);
     background-attachment: fixed;
-    backdrop-filter: var(--blur);
-    -webkit-backdrop-filter: var(--blur);
+    /* backdrop-filter: var(--blur); */
+    /* -webkit-backdrop-filter: var(--blur); */
     height: auto;
     scrollbar-color: unset;
 
@@ -60,6 +60,18 @@ body.theme-light {
     display: none;
 }
 
+.star {
+    height: 80px;
+    width: min-content;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+}
+
+.star img {
+    height: 100%;
+}
+
 div.content {
     margin-bottom: 0;
     margin-top: 0;
@@ -84,6 +96,7 @@ div.content-wrapper#bottom-half div.content div.blob {
 div.header {
     background: var(--background-alt);
     height: 100px;
+    padding-bottom: 0;
 }
 
 div.blob {
@@ -93,18 +106,18 @@ div.blob {
     max-width: 30%;
 }
 
-div.blob.mariobox {
+div.blob#preview-window {
     height: min-content;
     max-width: 420px;
 }
 
 
-div.blob.mariobox p {
+div.blob#preview-window p {
     text-align: center;
     padding: 0 30px;
 }
 
-div.blob > h2.blob-header {
+h2.blob-header {
     font-family: "Raleway";
     width: 100%;
     text-align: center;
@@ -202,6 +215,28 @@ input[type=color] {
     min-width: 50px;
     margin-left: 10px;
 }
+
+input[type=text] {
+    width: 80%;
+    border-radius: var(--border-radius);
+    margin: 10px;
+    padding: 5px;
+}
+
+input.error {
+    background-color: rgba(255, 0, 0, 0.5);
+    animation: wobble 0.25s;
+}
+
+@keyframes wobble {
+    0% { transform: translateX(0px); } 
+    15% { transform: translateX(-25px) } 
+    30% { transform: translateX(20px)  } 
+    45% { transform: translateX(-15px) } 
+    60% { transform: translateX(10px)  }
+    75% { transform: translateX(-5px)  }
+    100% { transform: translateX(0px); } 
+ } 
 
 textarea {
     font-family: "Inconsolata";
@@ -311,4 +346,171 @@ hr {
 .foot-text a {
     color: var(--text);
     text-decoration: none;
+}
+
+.menu-button {
+    color: var(--text-alt);
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    text-align: center;
+    top: 14px;
+    right: 10px;
+    transition: 0.25s ease;
+    cursor: pointer;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 3px 3px black;
+    -webkit-text-stroke: var(--important) 2px;
+}
+
+
+.menu-button::before {
+    background: linear-gradient(in hsl longer hue 315deg, red 0 0);
+    border-radius: 50%;
+    height: 0;
+    width: 0;
+    content: "";
+    position: absolute;
+    z-index: -1;
+    transition: 0.15s ease width, 0.15s ease height, 0.4s ease transform;
+    border: 2px solid black;
+}
+
+.menu-button:hover::before {
+    height: 100%;
+    width: 100%;
+    transform: rotate(360deg);
+}
+
+.menu-button:hover {
+    color: var(--text);
+    border-radius: 50%;
+}
+
+.menu-button i {
+    font-size: 40px;
+    padding: 0;
+}
+
+
+.sidenav {
+    height: 100vh;
+    width: 0px;
+    position: sticky;
+    z-index: 20;
+    top: 0;
+    float: right;
+    margin-top: 0;
+    background-color: var(--background-transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    overflow-x: hidden;
+    background-color: var(--background-alt);
+    transition: 0.5s;
+    padding-top: 88px;
+    font-family: "Gilroy Light";
+    font-size: 18px;
+    right: 0;
+    border-left: 2px solid var(--border);
+    border-right: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidenav.shown {
+    width: 300px;
+}
+
+.sidenav a {
+    color: var(--text);
+    padding: 4px;
+    text-decoration: none;
+    border-radius: 0;
+    display: block;
+    width: auto;
+    cursor: pointer;
+    transition: 0.15s ease;
+}
+
+.sidenav a:hover {
+    color: var(--text-alt);
+    background-color: var(--theme);
+    border-radius: 50px;
+}
+
+.sidenav a i {
+    font-size: 16px;
+    width: auto;
+    margin-right: 5px;
+}
+
+.sidenav > hr {
+    width: 100%;
+    border-top: 2px solid var(--border);
+}
+
+.sidenav > .menu-button:hover::before {
+    /* position: relative; */
+    transform: rotate(-180deg);
+}
+
+.sidenav > h2.blob-header {
+    width: max-content;
+}
+
+
+div#color-list {
+    width: 100%;
+    padding: 15px;
+}
+
+.color-entry {
+    border: 1px solid black;
+    border-radius: var(--border-radius);
+    background-color: var(--background);
+    margin: 10px 0;
+    overflow: hidden;
+    transition: 0.2s all ease;
+    cursor: pointer;
+}
+
+.color-entry span {
+    backdrop-filter: brightness(0.75);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    padding: 10px;
+    font-family: "Gilroy";
+    font-size: 24px;
+    color: var(--text);
+    width: 100%;
+    text-wrap: pretty;
+    display: block;
+    height: 100%;
+    text-shadow: 2px 2px black;
+    -webkit-text-stroke: var(--important) 1px;
+}
+
+.color-options {
+    background-color: var(--background-alt);
+    border-top: 0px solid var(--background-alt);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 0;
+    height: 0;
+    transition: 0.2s all ease;
+}
+
+.color-entry:hover {
+    box-shadow: 5px 5px black;
+    transform: translate(-5px, -5px);
+}
+
+.color-entry:hover .color-options {
+    height: 40px;
+    padding: 5px 0;
+    border-top-width: 1px;
 }
