@@ -11,7 +11,7 @@ body.theme-light {
     --button: #1886C4;
     --theme: #c779ce;
     --theme-alt: #06e0d0;
-    --link: #1888C4;
+    --link: #2cd2d8;
     --important: #000;
     --primary: #fff;
 
@@ -79,19 +79,9 @@ div.content {
     align-items: center;
 }
 
-div.content-wrapper#top-half {
+div.content-wrapper {
     margin-top: 100px;
 }
-
-div.content-wrapper#bottom-half {
-    margin-bottom: 30px;
-}
-
-div.content-wrapper#bottom-half div.content div.blob {
-    max-width: unset;
-    padding: 20px;
-}
-
 
 div.header {
     background: var(--background-alt);
@@ -200,10 +190,24 @@ span#type {
     /* transition: 0.1s all; */
 }
 
+.divider {
+    display: block;
+    border-top: 1px solid var(--border);
+}
+
 .button, select {
     background-color: var(--background-alt);
     font-size: 16px;
-    margin: 0 5px;
+    margin: 2px 5px;
+    max-width: 300px;
+    width: 95%;
+    color: var(--text-alt);
+    text-decoration: none;
+}
+
+.button a span {
+    color: var(--text-alt);
+    text-decoration: none;
 }
 
 select {
@@ -214,6 +218,8 @@ input[type=color] {
     width: auto;
     min-width: 50px;
     margin-left: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 input[type=text] {
@@ -228,6 +234,20 @@ input.error {
     animation: wobble 0.25s;
 }
 
+.bubble {
+    animation: bubble 0.25s;
+}
+
+@keyframes bubble {
+    0% { transform: scale(1); } 
+    15% { transform: scale(0.95) } 
+    30% { transform: scale(1.05)  } 
+    45% { transform: scale(0.975) } 
+    60% { transform: scale(1.025)  }
+    75% { transform: scale(0.98)  }
+    100% { transform: scale(1); } 
+}
+
 @keyframes wobble {
     0% { transform: translateX(0px); } 
     15% { transform: translateX(-25px) } 
@@ -236,17 +256,18 @@ input.error {
     60% { transform: translateX(10px)  }
     75% { transform: translateX(-5px)  }
     100% { transform: translateX(0px); } 
- } 
+} 
 
 textarea {
     font-family: "Inconsolata";
     border-radius: var(--border-radius);
-    height: 500px;
+    height: 490px;
     max-width: 40%;
     width: auto;
     font-size: 16px;
     line-height: 16px;
     padding: 5px;
+    margin-bottom: 5px;
     white-space: pre;
     overflow-wrap: normal;
     overflow-x: scroll;
@@ -274,10 +295,11 @@ hr {
     border: 1px solid var(--border);
     cursor: pointer;
     padding: 18px;
-    width: 100%;
+    width: 250px;
     text-align: left;
     position: sticky;
     transition: all 0.1s ease-in;
+    margin: 5px 10px 0 10px;
 }
 
 .accordion::before {
@@ -329,13 +351,16 @@ hr {
     text-align: left;
     font-size: 16px;
     border: none;
-    width: 100%;
+    margin: 0 10px 5px 10px;
+    width: 250px;
+    color: var(--text);
 }
 
 .panel.expanded {
     border: 1px solid var(--border);
     border-radius: 0 0 var(--border-radius) var(--border-radius);
-    max-height: 200px;
+    max-height: 350px;
+    overflow-y: scroll;
 }
 
 .foot-text.foot-text-big a {
@@ -355,7 +380,7 @@ hr {
     height: 64px;
     text-align: center;
     top: 14px;
-    right: 10px;
+    left: 10px;
     transition: 0.25s ease;
     cursor: pointer;
     font-size: 30px;
@@ -366,9 +391,14 @@ hr {
     -webkit-text-stroke: var(--important) 2px;
 }
 
+.menu-button.right {
+    left: unset;
+    right: 10px;
+}
+
 
 .menu-button::before {
-    background: linear-gradient(in hsl longer hue 315deg, red 0 0);
+    background: linear-gradient(in hsl longer hue 45deg, red 0 0);
     border-radius: 50%;
     height: 0;
     width: 0;
@@ -377,6 +407,10 @@ hr {
     z-index: -1;
     transition: 0.15s ease width, 0.15s ease height, 0.4s ease transform;
     border: 2px solid black;
+}
+
+.menu-button.right::before {
+    background: linear-gradient(in hsl longer hue 315deg, red 0 0);
 }
 
 .menu-button:hover::before {
@@ -402,7 +436,7 @@ hr {
     position: sticky;
     z-index: 20;
     top: 0;
-    float: right;
+    float: left;
     margin-top: 0;
     background-color: var(--background-transparent);
     backdrop-filter: blur(10px);
@@ -413,19 +447,27 @@ hr {
     padding-top: 88px;
     font-family: "Gilroy Light";
     font-size: 18px;
-    right: 0;
-    border-left: 2px solid var(--border);
-    border-right: none;
+    left: 0;
+    border-right: 2px solid var(--border);
+    border-left: none;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.sidenav.right {
+    float: right;
+    left: unset;
+    right: 0;
+    border-left: 2px solid var(--border);
+    border-right: none;
 }
 
 .sidenav.shown {
     width: 300px;
 }
 
-.sidenav a {
+.color-entry a {
     color: var(--text);
     padding: 4px;
     text-decoration: none;
@@ -436,13 +478,13 @@ hr {
     transition: 0.15s ease;
 }
 
-.sidenav a:hover {
+.color-entry a:hover {
     color: var(--text-alt);
     background-color: var(--theme);
     border-radius: 50px;
 }
 
-.sidenav a i {
+.color-entry a i {
     font-size: 16px;
     width: auto;
     margin-right: 5px;
@@ -466,6 +508,9 @@ hr {
 div#color-list {
     width: 100%;
     padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .color-entry {
@@ -476,6 +521,7 @@ div#color-list {
     overflow: hidden;
     transition: 0.2s all ease;
     cursor: pointer;
+    width: 250px;
 }
 
 .color-entry span {
@@ -488,7 +534,6 @@ div#color-list {
     width: 100%;
     text-wrap: pretty;
     display: block;
-    height: 100%;
     text-shadow: 2px 2px black;
     -webkit-text-stroke: var(--important) 1px;
 }
@@ -513,4 +558,22 @@ div#color-list {
     height: 40px;
     padding: 5px 0;
     border-top-width: 1px;
+}
+
+#code-name {
+    font-weight: bold;
+}
+
+ul {
+    font-family: "Raleway";
+    font-size: 16px;
+    color: var(--text-alt);
+    width: 250px;
+    text-wrap: pretty;
+}
+
+ul .link {
+    color: var(--link);
+    font-family: "Inconsolata";
+    font-size: 18px;
 }

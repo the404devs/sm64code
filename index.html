@@ -2,7 +2,6 @@
 <html>
     <head>
         <title>SM64 Colour Code Generator</title>
-
         <link rel="stylesheet" type="text/css" href="https://the404.nl/css/controls.css">
         <link rel="stylesheet" type="text/css" href="https://the404.nl/css/main.css">
         <link rel="stylesheet" type="text/css" href="https://the404.nl/css/home.css">
@@ -20,6 +19,11 @@
             <!-- <div class="star" onclick="star()">
                 <img src="img/star.gif">
             </div> -->
+
+            <span class="menu-button" onclick="toggleHelpMenu()" title="Show Help">
+                <i class="open-icon fas fa-question" aria-hidden="true"></i>
+            </span>
+
             <div class="logo">
                 <div class="logo-big">
                     <span style="color: crimson">S</span><span style="color: cornflowerblue">u</span><span style="color: gold">p</span><span style="color: cornflowerblue">e</span><span style="color: forestgreen">r</span> <span style="color: cornflowerblue">M</span><span style="color: forestgreen">a</span><span style="color: gold">r</span><span style="color: crimson">i</span><span style="color: forestgreen">o</span> <span style="color: red">64</span> 
@@ -30,13 +34,13 @@
             </div>
 
 
-            <span class="menu-button" onclick="toggleColorMenu()" title="View Saved Colours">
+            <span class="menu-button right" onclick="toggleColorMenu()" title="View Saved Colours">
                 <i class="open-icon fas fa-palette" aria-hidden="true"></i>
             </span>
         </div>
 
         <div id="color-menu" class="sidenav right">
-            <span class="menu-button" onclick="toggleColorMenu()" title="Close">
+            <span class="menu-button right" onclick="toggleColorMenu()" title="Close">
                 <i class="open-icon fas fa-times" aria-hidden="true"></i>
             </span>
             <hr>
@@ -44,7 +48,42 @@
             <div id="color-list"></div>
         </div>
 
-        <div class="content-wrapper" id="top-half">
+        <div id="help-menu" class="sidenav">
+            <span class="menu-button" onclick="toggleHelpMenu()" title="Close">
+                <i class="open-icon fas fa-times" aria-hidden="true"></i>
+            </span>
+            <hr>
+            <h2 class="blob-header">How to use your code:</h2>
+            <button class="accordion">Project64</button>
+            <div class="panel">
+                <p>Open the Cheats menu from the top menu bar at <b>System >> Cheats</b>. <br>Click the arrow on the right hand side to open the cheat creation section. <br>Paste your code into the box labeled <b>"address,"</b> and give a name for the code in the <b>"Name"</b> box. <br>Click on <b>"Add Cheat,"</b> and it will appear in the list on the left hand side. <br>Now just check off the box beside it and Mario will be sporting his new look!</p>
+            </div>
+
+            <button class="accordion">Parallel Launcher</button>
+            <div class="panel">
+                <p>Access the Quick Menu with F1, and scroll down to "Cheats". <br> Navigate to <b>"Load Cheat File (Append)"</b>, and select the <b>.cht</b> file you downloaded from here.<br>There should now be a new entry in the cheats list named <b>"Custom Colour"</b>, make sure it is enabled.<br><br>Alternatively, you can manually create a new cheat entry and copy-paste the code from here.</p>
+            </div>
+
+            <hr class="divider">
+            <h2 class="blob-header">Recent Changes:</h2>
+            <ul>
+                <li>Chinese iQue support!</li>
+                <li>Improved Mario preview rendering!</li>
+                <li>Support for shadow colours!</li>
+                <li>Local saving of colour codes!</li>
+                <li>Brand-new shiny UI!</li>
+            </ul>
+            <hr class="divider">
+            <h2 class="blob-header">Links:</h2>
+            <ul>
+                <li><a class="link" href="https://github.com/the404devs/sm64code">Source Code</a></li>
+                <li><a class="link" href="https://github.com/the404devs/sm64code/issues">Report Issues</a></li>
+                <br>
+                <li><a class="link" href="https://the404.nl" style="color: #b20acb;">The404 Home</a></li>
+            </ul>
+        </div>
+
+        <div class="content-wrapper">
             <div class="content">
                 <div class="blob noscale" id="color-selectors">
                     <h2 class="blob-header">Hat & Shirt</h2>
@@ -107,13 +146,13 @@
                         <input class="button mario-color" type="color" id="shoes-shadow" onchange="updatePreview(this.id)" value="#2f0e07">
                         <span id="shoes-shadow-label"></span>
                     </div>
-                    <br>
+                    <hr class="divider">
                     <button class="button" onclick="randomize()"><span>Randomize!</span></button>
-
                 </div>
+
                 <div class="blob noscale" id="preview-window">
                     <h2 class="blob-header">Preview</h2>
-                    <div class="image-container">
+                    <div class="image-container" id="preview">
                         <img class="image-overlay" id="cap-base-img" src="img/cap-base.png">
                         <img class="image-overlay" id="cap-shadow-img" src="img/cap-shadow.png">
                         <img class="image-overlay" id="skin-base-img" src="img/skin-base.png">
@@ -137,6 +176,18 @@
                     <button class="button" onclick="reset()"><span>Reset Mario</span></button>
                 </div>
                 <div class="blob wide noscale">
+                    <h2 class="blob-header">Your Code:</h2>
+                    <input id="code-name" type="text" placeholder="Enter a name..." onchange="updateName(this.value)" maxlength="24">
+                    <textarea id="code" readonly></textarea>
+                    <textarea id="guide" readonly></textarea>
+                    <!-- <span id="type">sus</span> -->
+                    
+                    <button class="button" onclick="copy()"><span>Copy to Clipboard</span></button>
+                    <button class="button" onclick="download()"><span>Download as .cht</span></button>
+                    <button class="button" onclick="save()"><span>Save Locally</span></button>
+
+                    <hr class="divider">
+
                     <h2 class="blob-header">Game Version:</h2>
                     <select name="gameVer" id="gameVer" onchange="switchGameVersion()" class="button">
                         <option value="ntsc-u">NTSC-U (North American)</option>
@@ -145,70 +196,29 @@
                         <option value="shindou">Shindou (Japanese 1.1)</option>
                         <option value="ique">iQue (Chinese)</option>
                     </select>
-                    <hr class="divider">
-                    <h2 class="blob-header">Your Code:</h2>
-                    <input id="code-name" type="text" placeholder="Enter a name..." onchange="updateName(this.value)" maxlength="24">
-                    <textarea id="code" readonly></textarea>
-                    <textarea id="guide" readonly></textarea>
-                    <span id="type">sus</span>
-
-                    <button class="button" onclick="copy()"><span>Copy to Clipboard</span></button>
-                    <button class="button" onclick="download()"><span>Download as .cht</span></button>
-                    <hr class="divider">
-                    <button class="button" onclick="save()"><span>Save</span></button>
                 </div>
             </div>
         </div>
 
-        <div class="content-wrapper" id="bottom-half">
-            <div class="content">
-                <div class="blob wide noscale">
-                    <h2 class="blob-header">How to use your code:</h2>
+        <script>
+            //This script block is what allows the panels to expand and retract smoothly.
+            var acc = document.getElementsByClassName("accordion");
+            var i;
 
-                    <button class="accordion">Project64</button>
-                    <div class="panel">
-                        <p>Open the Cheats menu from the top menu bar at <b>System >> Cheats</b>. <br>Click the arrow on the right hand side to open the cheat creation section. <br>Paste your code into the box labeled <b>"address,"</b> and give a name for the code in the <b>"Name"</b> box. <br>Click on <b>"Add Cheat,"</b> and it will appear in the list on the left hand side. <br>Now just check off the box beside it and Mario will be sporting his new look!</p>
-                    </div>
+            for (i = 0; i < acc.length; i++) {
+              acc[i].addEventListener("click", function() {
+                this.classList.toggle("open");
+                var panel = this.nextElementSibling;
 
-                    <button class="accordion">Parallel Launcher</button>
-                    <div class="panel">
-                        <p>Access the Quick Menu with F1, and scroll down to "Cheats". <br> Navigate to <b>"Load Cheat File (Append)"</b>, and select the <b>.cht</b> file you downloaded from here.<br>There should now be a new entry in the cheats list named <b>"Custom Colour"</b>, make sure it is enabled.<br><br>Alternatively, you can manually create a new cheat entry and copy-paste the code from here.</p>
-                    </div>
-
-                    <p>
-                        Recently, I've noticed some traffic to this page, and upon further inspection I've realized it's the first search result when looking for colour code generators.
-                        <br>
-                        I decided to clean things up a bit, so hopefully it's a little easier to use. 
-                        <br>
-                        <br>
-                        Of particular interest, this tool now properly supports shadow colours, as well as the Chinese iQue version! Please note that shadow colours are not currently rendered in the preview images.
-                        <br>
-                        <b>Enjoy!</b>
-                    </p>
-
-                    <script>
-                        //This script block is what allows the panels to expand and retract smoothly.
-                        var acc = document.getElementsByClassName("accordion");
-                        var i;
-    
-                        for (i = 0; i < acc.length; i++) {
-                          acc[i].addEventListener("click", function() {
-                            this.classList.toggle("open");
-                            var panel = this.nextElementSibling;
-
-                            panel.classList.toggle("expanded");
-                            // if (panel.style.maxHeight){
-                            //   panel.style.maxHeight = null;
-                            // } else {
-                            //   panel.style.maxHeight = panel.scrollHeight + "px";
-                            // } 
-                          });
-                        }
-                    </script>
-                </div>
-            </div>
-        </div>
-
+                panel.classList.toggle("expanded");
+                // if (panel.style.maxHeight){
+                //   panel.style.maxHeight = null;
+                // } else {
+                //   panel.style.maxHeight = panel.scrollHeight + "px";
+                // } 
+              });
+            }
+        </script>
         
 
         <div class="footer subtle">

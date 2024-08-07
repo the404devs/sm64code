@@ -39,7 +39,7 @@ const defaultColors = {
 	}
 }
 
-let currentColorModel = defaultColors;
+let currentColorModel = JSON.parse(JSON.stringify(defaultColors));
 
 const memoryMappings = {
 	"ntsc-u": {
@@ -253,8 +253,6 @@ function readLocalStorage() {
 				</div>
 			`;
 
-
-			
 			let allColors = [];
 			Object.keys(code).forEach(part => {
 				if (part != "name") {
@@ -262,22 +260,21 @@ function readLocalStorage() {
 				}
 			});
 
-
 			colorEntry.style.background = `linear-gradient(45deg, ${allColors.toString()})`
 
 			colorEntry.setAttribute("uuid", key);
-			colorEntry.onclick = function() { this.classList.toggle('expanded') }
+
+			if (navigator.userAgentData.mobile) {
+				colorEntry.onclick = function() { this.classList.toggle('expanded') }
+			}
 
 			menu.appendChild(colorEntry);
-
-			//todo: spawn menu entries here
 		}
 	}
 }
 
 function remove(uuid) {
 	localStorage.removeItem(uuid);
-
 	readLocalStorage();
 }
 
@@ -322,7 +319,17 @@ function reset(){
 }
 
 function toggleColorMenu() {
+	if (window.innerWidth <= 1000 && document.getElementById("help-menu").classList.contains("shown")) {
+		document.getElementById("help-menu").classList.remove("shown");
+	}
 	document.getElementById("color-menu").classList.toggle("shown");
+}
+
+function toggleHelpMenu() {
+	if (window.innerWidth <= 1000 && document.getElementById("color-menu").classList.contains("shown")) {
+		document.getElementById("color-menu").classList.remove("shown");
+	}
+	document.getElementById("help-menu").classList.toggle("shown");
 }
 
 function randomize() {
@@ -330,7 +337,10 @@ function randomize() {
 		elem.value = "#000000".replace(/0/g,function(){return (~~(Math.random()*16)).toString(16);});
 		updatePreview(elem.id);
 		// console.log(elem.id, elem.value)
-	}); 
+	});
+	
+	document.getElementById("code-name").value = "Randomized Mario";
+	currentColorModel.name = "Randomized Mario";
 
 	generate();
 }
@@ -338,7 +348,7 @@ function randomize() {
 function getCodeName() {
 	const field = document.getElementById("code-name");
 	field.classList.remove("error");
-	void field.offsetWidth; // telementrigger reflow
+	void field.offsetWidth; // trigger reflow
 	const name = field.value;
 	if (name) {
 		return name;
@@ -350,17 +360,19 @@ function getCodeName() {
 
 function updatePreview(id) {
 	const color = document.getElementById(id).value;
+	const preview = document.getElementById('preview');
 	const target = id+"-img";
 	const label = id+"-label";
+	preview.classList.remove('bubble');
+	void preview.offsetWidth; // trigger reflow
+
 	const [part, type] = id.split("-");
 	currentColorModel[part][type] = color;
 	const filter = getFilter(color);
 	document.getElementById(target).style.filter = filter;
 	document.getElementById(label).textContent = color;
 
-
-
-	// console.log(filter);
+	preview.classList.add('bubble');
 	generate();
 }
 
@@ -427,6 +439,6 @@ function generate(){
 
 	document.getElementById("code").value = code.replaceAll("\t","").replace("\n", "").toUpperCase();
 	document.getElementById("guide").value = guideText;
-	document.getElementById("type").innerHTML = `This code is for the <b>${descriptiveNames[gameVersion]}</b> version.`;
+	// document.getElementById("type").innerHTML = `This code is for the <b>${descriptiveNames[gameVersion]}</b> version.`;
 
 }
