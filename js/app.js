@@ -266,6 +266,7 @@ function readLocalStorage() {
 			colorEntry.style.background = `linear-gradient(45deg, ${allColors.toString()})`
 
 			colorEntry.setAttribute("uuid", key);
+			colorEntry.onclick = function() { this.classList.toggle('expanded') }
 
 			menu.appendChild(colorEntry);
 

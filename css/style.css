@@ -504,12 +504,12 @@ div#color-list {
     transition: 0.2s all ease;
 }
 
-.color-entry:hover {
+.color-entry:hover, .color-entry.expanded {
     box-shadow: 5px 5px black;
     transform: translate(-5px, -5px);
 }
 
-.color-entry:hover .color-options {
+.color-entry:hover .color-options, .color-entry.expanded .color-options {
     height: 40px;
     padding: 5px 0;
     border-top-width: 1px;
