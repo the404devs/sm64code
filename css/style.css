@@ -438,11 +438,9 @@ hr {
     top: 0;
     float: left;
     margin-top: 0;
-    background-color: var(--background-transparent);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px) brightness(0.5);
+    -webkit-backdrop-filter: blur(10px) brightness(0.5);
     overflow-x: hidden;
-    background-color: var(--background-alt);
     transition: 0.5s;
     padding-top: 88px;
     font-family: "Gilroy Light";
@@ -479,13 +477,13 @@ hr {
 }
 
 .color-entry a:hover {
-    color: var(--text-alt);
+    color: black;
     background-color: var(--theme);
     border-radius: 50px;
 }
 
 .color-entry a i {
-    font-size: 16px;
+    font-size: 18px;
     width: auto;
     margin-right: 5px;
 }
@@ -525,7 +523,7 @@ div#color-list {
 }
 
 .color-entry span {
-    backdrop-filter: brightness(0.75);
+    backdrop-filter: brightness(0.9);
     border-radius: var(--border-radius) var(--border-radius) 0 0;
     padding: 10px;
     font-family: "Gilroy";
