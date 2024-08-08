@@ -264,7 +264,7 @@ function readLocalStorage() {
 
 			colorEntry.setAttribute("uuid", key);
 
-			if (navigator.userAgentData.mobile) {
+			if (navigator.userAgentData && navigator.userAgentData.mobile) {
 				colorEntry.onclick = function() { this.classList.toggle('expanded') }
 			}
 
