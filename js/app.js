@@ -323,6 +323,8 @@ function toggleColorMenu() {
 		document.getElementById("help-menu").classList.remove("shown");
 	}
 	document.getElementById("color-menu").classList.toggle("shown");
+	document.getElementById("content").classList.toggle("squeeze-right");
+
 }
 
 function toggleHelpMenu() {
@@ -330,6 +332,8 @@ function toggleHelpMenu() {
 		document.getElementById("color-menu").classList.remove("shown");
 	}
 	document.getElementById("help-menu").classList.toggle("shown");
+	document.getElementById("content").classList.toggle("squeeze-left");
+
 }
 
 function randomize() {

@@ -85,65 +85,65 @@
         </div>
 
         <div class="content-wrapper">
-            <div class="content">
+            <div class="content" id="content">
                 <div class="blob noscale" id="color-selectors">
                     <h2 class="blob-header">Hat & Shirt</h2>
                     <div class="control-group">
-                        <label>Base Colour:</label>
+                        <label>Base:</label>
                         <input class="button mario-color" type="color" id="cap-base" onchange="updatePreview(this.id)" value="#ff0000">
                         <span id="cap-base-label"></span>
                         <br>
-                        <label>Shadow Colour:</label>
+                        <label>Shadow:</label>
                         <input class="button mario-color" type="color" id="cap-shadow" onchange="updatePreview(this.id)" value="#7f0000">
                         <span id="cap-shadow-label"></span>
                     </div>
                     <h2 class="blob-header">Face</h2>
                     <div class="control-group">
-                        <label>Base Colour:</label>
+                        <label>Base:</label>
                         <input class="button mario-color" type="color" id="skin-base" onchange="updatePreview(this.id)" value="#fcbf79">
                         <span id="skin-base-label"></span>
                         <br>
-                        <label>Shadow Colour:</label>
+                        <label>Shadow:</label>
                         <input class="button mario-color" type="color" id="skin-shadow" onchange="updatePreview(this.id)" value="#81603c">
                         <span id="skin-shadow-label"></span>
                     </div>                   
                     <h2 class="blob-header">Gloves</h2>
                     <div class="control-group">
-                        <label>Base Colour:</label>
+                        <label>Base:</label>
                         <input class="button mario-color" type="color" id="gloves-base" onchange="updatePreview(this.id)" value="#ffffff">
                         <span id="gloves-base-label"></span>
                         <br>
-                        <label>Shadow Colour:</label>
+                        <label>Shadow:</label>
                         <input class="button mario-color" type="color" id="gloves-shadow" onchange="updatePreview(this.id)" value="#7f7f7f">
                         <span id="gloves-shadow-label"></span>
                     </div>
                     <h2 class="blob-header">Overalls</h2>
                     <div class="control-group">
-                        <label>Base Colour:</label>
+                        <label>Base:</label>
                         <input class="button mario-color" type="color" id="overalls-base" onchange="updatePreview(this.id)" value="#0000ff">
                         <span id="overalls-base-label"></span>
                         <br>
-                        <label>Shadow Colour:</label>
+                        <label>Shadow:</label>
                         <input class="button mario-color" type="color" id="overalls-shadow" onchange="updatePreview(this.id)" value="#00007f">
                         <span id="overalls-shadow-label"></span>
                     </div>
                     <h2 class="blob-header">Hair</h2>
                     <div class="control-group">
-                        <label>Base Colour:</label>
+                        <label>Base:</label>
                         <input class="button mario-color" type="color" id="hair-base" onchange="updatePreview(this.id)" value="#730600">
                         <span id="hair-base-label"></span>
                         <br>
-                        <label>Shadow Colour:</label>
+                        <label>Shadow:</label>
                         <input class="button mario-color" type="color" id="hair-shadow" onchange="updatePreview(this.id)" value="#390300">  
                         <span id="hair-shadow-label"></span>
                     </div>
                     <h2 class="blob-header">Shoes</h2>
                     <div class="control-group">
-                        <label>Base Colour:</label>
+                        <label>Base:</label>
                         <input class="button mario-color" type="color" id="shoes-base" onchange="updatePreview(this.id)" value="#701c0f">
                         <span id="shoes-base-label"></span>
                         <br>
-                        <label>Shadow Colour:</label>
+                        <label>Shadow:</label>
                         <input class="button mario-color" type="color" id="shoes-shadow" onchange="updatePreview(this.id)" value="#2f0e07">
                         <span id="shoes-shadow-label"></span>
                     </div>
@@ -154,6 +154,7 @@
                 <div class="blob noscale" id="preview-window">
                     <h2 class="blob-header">Preview</h2>
                     <div class="image-container" id="preview">
+                        <img class="image-overlay" id="shadow" src="img/void.png">
                         <img class="image-overlay" id="cap-base-img" src="img/cap-base.png">
                         <img class="image-overlay" id="cap-shadow-img" src="img/cap-shadow.png">
                         <img class="image-overlay" id="skin-base-img" src="img/skin-base.png">
@@ -166,13 +167,14 @@
                         <img class="image-overlay" id="hair-shadow-img" src="img/hair-shadow.png">
                         <img class="image-overlay" id="shoes-base-img" src="img/shoes-base.png">
                         <img class="image-overlay" id="shoes-shadow-img" src="img/shoes-shadow.png">
-                        <img class="image-overlay textures" id="textures" src="img/textures.png">
+                        <img class="image-overlay" id="textures" src="img/textures.png">
                     </div>
+                    <hr class="divider">
                     <p>
-                        This preview may not be 100% accurate to in-game colours due to some slight randomness in the Mario-dyeing process.
+                        <b>This preview may not be 100% accurate</b> to in-game colours due to some slight randomness in the Mario-dyeing process.
                         <br>
                         <br>
-                        Bright shadow colours tend to overpower the base colour.
+                        Bright <b>shadow</b> colours will tend to overpower the <b>base</b> colour when seen in-game.
                     </p>
                     <button class="button" onclick="reset()"><span>Reset Mario</span></button>
                 </div>
