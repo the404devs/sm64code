@@ -67,6 +67,7 @@
             <hr class="divider">
             <h2 class="blob-header">Recent Changes:</h2>
             <ul>
+                <li>Fixed an issue causing Mario to look weird in Project64.</li>
                 <li>Chinese iQue support!</li>
                 <li>Improved Mario preview rendering!</li>
                 <li>Support for shadow colours!</li>
@@ -178,8 +179,10 @@
                 <div class="blob wide noscale">
                     <h2 class="blob-header">Your Code:</h2>
                     <input id="code-name" type="text" placeholder="Enter a name..." onchange="updateName(this.value)" maxlength="24">
-                    <textarea id="code" readonly></textarea>
-                    <textarea id="guide" readonly></textarea>
+                    <div class="textarea-container">
+                        <textarea id="code" readonly></textarea>
+                        <textarea id="guide" readonly></textarea>
+                    </div>
                     <!-- <span id="type">sus</span> -->
                     
                     <button class="button" onclick="copy()"><span>Copy to Clipboard</span></button>
@@ -223,8 +226,8 @@
 
         <div class="footer subtle">
             <span class="foot-text foot-text-big"><a class="link" href="https://the404.nl">the404.nl</a></span>
-            <span class="foot-text"><a class="link" href="https://github.com/the404devs/sm64code">v2.0.2</a></span>
-            <span class="foot-text">2024-08-07</span>
+            <span class="foot-text"><a class="link" href="https://github.com/the404devs/sm64code">v2.0.3</a></span>
+            <span class="foot-text">2024-12-05</span>
         </div>
     </body>
 </html>

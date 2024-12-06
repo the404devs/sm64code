@@ -44,137 +44,137 @@ let currentColorModel = JSON.parse(JSON.stringify(defaultColors));
 const memoryMappings = {
 	"ntsc-u": {
 		"hat_shirt": {
-			"shadow": ["8107EC38", "8107EC3A"],
-			"main": ["8107EC40", "8107EC42"]
+			"shadow": ["8107EC38", "8107EC3A", "8107EC3C", "8107EC3E"],
+			"main": ["8107EC40", "8107EC42", "8107EC44", "8107EC46"]
 		},
 		"hair": {
-			"shadow": ["8107EC98", "8107EC9A"],
-			"main": ["8107ECA0", "8107ECA2"]
+			"shadow": ["8107EC98", "8107EC9A", "8107EC9C", "8107EC9E"],
+			"main": ["8107ECA0", "8107ECA2", "8107ECA4", "8107ECA6"]
 		},
 		"skin": {
-			"shadow": ["8107EC80", "8107EC82"],
-			"main": ["8107EC88", "8107EC8A"]
+			"shadow": ["8107EC80", "8107EC82", "8107EC84", "8107EC86"],
+			"main": ["8107EC88", "8107EC8A", "8107EC8C", "8107EC8E"]
 		},
 		"gloves": {
-			"shadow": ["8107EC50", "8107EC52"],
-			"main": ["8107EC58", "8107EC5A"]
+			"shadow": ["8107EC50", "8107EC52", "8107EC54", "8107EC56"],
+			"main": ["8107EC58", "8107EC5A", "8107EC5C", "8107EC5E"]
 		},
 		"overalls": {
-			"shadow": ["8107EC20", "8107EC22"],
-			"main": ["8107EC28", "8107EC2A"]
+			"shadow": ["8107EC20", "8107EC22", "8107EC24", "8107EC26"],
+			"main": ["8107EC28", "8107EC2A", "8107EC2C", "8107EC2E"]
 		},
 		"shoes": {
-			"shadow": ["8107EC68", "8107EC6A"],
-			"main": ["8107EC70", "8107EC72"]
+			"shadow": ["8107EC68", "8107EC6A", "8107EC6C", "8107EC6E"],
+			"main": ["8107EC70", "8107EC72", "8107EC74", "8107EC76"]
 		}
 	},
 	"ntsc-j": {
 		"hat_shirt": {
-			"shadow": ["8107BDD8", "8107BDDA"],
-			"main": ["8107BDE0", "8107BDE2"]
+			"shadow": ["8107BDD8", "8107BDDA", "8107BDDC", "8107BDDE"],
+			"main": ["8107BDE0", "8107BDE2", "8107BDE4", "8107BDE6"]
 		},
 		"hair": {
-			"shadow": ["8107BE38", "8107BE3A"],
-			"main": ["8107BE40", "8107BE42"]
+			"shadow": ["8107BE38", "8107BE3A", "8107BE3C", "8107BE3E"],
+			"main": ["8107BE40", "8107BE42", "8107BE44", "8107BE46"]
 		},
 		"skin": {
-			"shadow": ["8107BE20", "8107BE22"],
-			"main": ["8107BE28", "8107BE2A"]
+			"shadow": ["8107BE20", "8107BE22", "8107BE24", "8107BE26"],
+			"main": ["8107BE28", "8107BE2A", "8107BE2C", "8107BE2E"]
 		},
 		"gloves": {
-			"shadow": ["8107BDF0", "8107BDF2"],
-			"main": ["8107BDF8", "8107BDFA"]
+			"shadow": ["8107BDF0", "8107BDF2", "8107BE24", "8107BE26"],
+			"main": ["8107BDF8", "8107BDFA", "8107BE2C", "8107BE2E"]
 		},
 		"overalls": {
-			"shadow": ["8107BDC0", "8107BDC2"],
-			"main": ["8107BDC8", "8107BDCA"]
+			"shadow": ["8107BDC0", "8107BDC2", "8107BDC4", "8107BDC6"],
+			"main": ["8107BDC8", "8107BDCA", "8107BDCC", "8107BDCE"]
 		},
 		"shoes": {
-			"shadow": ["8107BE08", "8107BE0A"],
-			"main": ["8107BE10", "8107BE12"]
+			"shadow": ["8107BE08", "8107BE0A", "8107BE0C", "8107BE0E"],
+			"main": ["8107BE10", "8107BE12", "8107BE14", "8107BE16"]
 		}
 	},
 	"pal": {
 		"hat_shirt": {
-			"shadow": ["810742F8", "810742FA"],
-			"main": ["81074300", "81074302"]
+			"shadow": ["810742F8", "810742FA", "810742FC", "810742FE"],
+			"main": ["81074300", "81074302", "81074304", "81074306"]
 		},
 		"hair": {
-			"shadow": ["81074358", "8107435A"],
-			"main": ["81074360", "81074362"]
+			"shadow": ["81074358", "8107435A", "8107435C", "8107435E"],
+			"main": ["81074360", "81074362", "81074364", "81074366"]
 		},
 		"skin": {
-			"shadow": ["81074340", "81074342"],
-			"main": ["81074348", "8107434A"]
+			"shadow": ["81074340", "81074342", "81074344", "81074346"],
+			"main": ["81074348", "8107434A", "8107434C", "8107434E"]
 		},
 		"gloves": {
-			"shadow": ["81074310", "81074312"],
-			"main": ["81074318", "8107431A"]
+			"shadow": ["81074310", "81074312", "81074314", "81074316"],
+			"main": ["81074318", "8107431A", "8107431C", "8107431E"]
 		},
 		"overalls": {
-			"shadow": ["810742E0", "810742E2"],
-			"main": ["810742E8", "810742EA"]
+			"shadow": ["810742E0", "810742E2", "810742E4", "810742E6"],
+			"main": ["810742E8", "810742EA", "810742EC", "810742EE"]
 		},
 		"shoes": {
-			"shadow": ["81074328", "8107432A"],
-			"main": ["81074330", "81074332"]
+			"shadow": ["81074328", "8107432A", "8107432C", "8107432E"],
+			"main": ["81074330", "81074332", "81074334", "81074336"]
 		}
 	},
 	"shindou": {
 		"hat_shirt": {
-			"shadow": ["8107BDD8", "8107BDDA"],
-			"main": ["8107BDE0", "8107BDE2"]
+			"shadow": ["8107BDD8", "8107BDDA", "8107BDDC", "8107BDDE"],
+			"main": ["8107BDE0", "8107BDE2", "8107BDE4", "8107BDE6"]
 		},
 		"hair": {
-			"shadow": ["8107BE38", "8107BE3A"],
-			"main": ["8107BE40", "8107BE42"]
+			"shadow": ["8107BE38", "8107BE3A", "8107BE3C", "8107BE3E"],
+			"main": ["8107BE40", "8107BE42", "8107BE44", "8107BE46"]
 		},
 		"skin": {
-			"shadow": ["8107BE20", "8107BE22"],
-			"main": ["8107BE28", "8107BE2A"]
+			"shadow": ["8107BE20", "8107BE22", "8107BE24", "8107BE26"],
+			"main": ["8107BE28", "8107BE2A", "8107BE2C", "8107BE2E"]
 		},
 		"gloves": {
-			"shadow": ["8107BDF0", "8107BDF2"],
-			"main": ["8107BDF8", "8107BDFA"]
+			"shadow": ["8107BDF0", "8107BDF2", "8107BDF4", "8107BDF6"],
+			"main": ["8107BDF8", "8107BDFA", "8107BDFC", "8107BDFE"]
 		},
 		"overalls": {
-			"shadow": ["8107BDC0", "8107BDC2"],
-			"main": ["8107BDC8", "8107BDCA"]
+			"shadow": ["8107BDC0", "8107BDC2", "8107BDC4", "8107BDC6"],
+			"main": ["8107BDC8", "8107BDCA", "8107BDCC", "8107BDCE"]
 		},
 		"shoes": {
-			"shadow": ["8107BE08", "8107BE0A"],
-			"main": ["8107BE10", "8107BE12"]
+			"shadow": ["8107BE08", "8107BE0A", "8107BE0C", "8107BE0E"],
+			"main": ["8107BE10", "8107BE12", "8107BE14", "8107BE16"]
 		}
 	},
 	"ique": {
 		"hat_shirt": {
-			"shadow": ["810610A8", "810610AA"],
-			"main": ["810610B0", "810610B2"]
+			"shadow": ["810610A8", "810610AA", "810610AC", "810610AE"],
+			"main": ["810610B0", "810610B2", "810610B4", "810610B6"]
 		},
 		"hair": {
-			"shadow": ["81061108", "8106110A"],
-			"main": ["81061110", "81061112"]
+			"shadow": ["81061108", "8106110A", "8106110C", "8106110E"],
+			"main": ["81061110", "81061112", "81061114", "81061116"]
 		},
 		"skin": {
-			"shadow": ["810610F0", "810610F2"],
-			"main": ["810610F8", "810610FA"]
+			"shadow": ["810610F0", "810610F2", "810610F4", "810610F6"],
+			"main": ["810610F8", "810610FA", "810610FC", "810610FE"]
 		},
 		"gloves": {
-			"shadow": ["810610C0", "810610C2"],
-			"main": ["810610C8", "810610CA"]
+			"shadow": ["810610C0", "810610C2", "810610C4", "810610C6"],
+			"main": ["810610C8", "810610CA", "810610CC", "810610CE"]
 		},
 		"overalls": {
-			"shadow": ["81061090", "81061092"],
-			"main": ["81061098", "8106109A"]
+			"shadow": ["81061090", "81061092", "81061094", "81061096"],
+			"main": ["81061098", "8106109A", "8106109C", "8106109E"]
 		},
 		"shoes": {
-			"shadow": ["810610D8", "810610DA"],
-			"main": ["810610E0", "810610E2"]
+			"shadow": ["810610D8", "810610DA", "810610DC", "810610DE"],
+			"main": ["810610E0", "810610E2", "810610E4", "810610E6"]
 		}
 	}
 }
 
-const guideText = "┬ Hat & Shirt\n│\n│\n┘\n\n┬ Face\n│\n│\n┘\n\n┬ Gloves\n│\n│\n┘\n\n┬ Overalls\n│\n│\n┘\n\n┬ Hair\n│\n│\n┘\n\n┬ Shoes\n│\n│\n┘";
+const guideText = "┬ Hat & Shirt\n│\n│\n│\n│\n│\n│\n┘\n\n┬ Face\n│\n│\n│\n│\n│\n│\n┘\n\n┬ Gloves\n│\n│\n│\n│\n│\n│\n┘\n\n┬ Overalls\n│\n│\n│\n│\n│\n│\n┘\n\n┬ Hair\n│\n│\n│\n│\n│\n│\n┘\n\n┬ Shoes\n│\n│\n│\n│\n│\n│\n┘";
 
 function switchGameVersion() {
 	gameVersion = document.getElementById("gameVer").value;
@@ -410,31 +410,57 @@ function generate(){
 	${memoryMappings[gameVersion].hat_shirt.shadow[1]} ${hat_shad[2]}00
 	${memoryMappings[gameVersion].hat_shirt.main[0]} ${hat_base[0]}${hat_base[1]}
 	${memoryMappings[gameVersion].hat_shirt.main[1]} ${hat_base[2]}00
+	${memoryMappings[gameVersion].hat_shirt.shadow[2]} ${hat_shad[0]}${hat_shad[1]}
+	${memoryMappings[gameVersion].hat_shirt.shadow[3]} ${hat_shad[2]}00
+	${memoryMappings[gameVersion].hat_shirt.main[2]} ${hat_base[0]}${hat_base[1]}
+	${memoryMappings[gameVersion].hat_shirt.main[3]} ${hat_base[2]}00
 
 	${memoryMappings[gameVersion].skin.shadow[0]} ${skin_shad[0]}${skin_shad[1]}
 	${memoryMappings[gameVersion].skin.shadow[1]} ${skin_shad[2]}00
 	${memoryMappings[gameVersion].skin.main[0]} ${skin_base[0]}${skin_base[1]}
 	${memoryMappings[gameVersion].skin.main[1]} ${skin_base[2]}00
+	${memoryMappings[gameVersion].skin.shadow[2]} ${skin_shad[0]}${skin_shad[1]}
+	${memoryMappings[gameVersion].skin.shadow[3]} ${skin_shad[2]}00
+	${memoryMappings[gameVersion].skin.main[2]} ${skin_base[0]}${skin_base[1]}
+	${memoryMappings[gameVersion].skin.main[3]} ${skin_base[2]}00
 
 	${memoryMappings[gameVersion].gloves.shadow[0]} ${glove_shad[0]}${glove_shad[1]}
 	${memoryMappings[gameVersion].gloves.shadow[1]} ${glove_shad[2]}00
 	${memoryMappings[gameVersion].gloves.main[0]} ${glove_base[0]}${glove_base[1]}
 	${memoryMappings[gameVersion].gloves.main[1]} ${glove_base[2]}00
+	${memoryMappings[gameVersion].gloves.shadow[2]} ${glove_shad[0]}${glove_shad[1]}
+	${memoryMappings[gameVersion].gloves.shadow[3]} ${glove_shad[2]}00
+	${memoryMappings[gameVersion].gloves.main[2]} ${glove_base[0]}${glove_base[1]}
+	${memoryMappings[gameVersion].gloves.main[3]} ${glove_base[2]}00
 
 	${memoryMappings[gameVersion].overalls.shadow[0]} ${overalls_shad[0]}${overalls_shad[1]}
 	${memoryMappings[gameVersion].overalls.shadow[1]} ${overalls_shad[2]}00
 	${memoryMappings[gameVersion].overalls.main[0]} ${overalls_base[0]}${overalls_base[1]}
 	${memoryMappings[gameVersion].overalls.main[1]} ${overalls_base[2]}00
+	${memoryMappings[gameVersion].overalls.shadow[2]} ${overalls_shad[0]}${overalls_shad[1]}
+	${memoryMappings[gameVersion].overalls.shadow[3]} ${overalls_shad[2]}00
+	${memoryMappings[gameVersion].overalls.main[2]} ${overalls_base[0]}${overalls_base[1]}
+	${memoryMappings[gameVersion].overalls.main[3]} ${overalls_base[2]}00
 
 	${memoryMappings[gameVersion].hair.shadow[0]} ${hair_shad[0]}${hair_shad[1]}
 	${memoryMappings[gameVersion].hair.shadow[1]} ${hair_shad[2]}00
 	${memoryMappings[gameVersion].hair.main[0]} ${hair_base[0]}${hair_base[1]}
 	${memoryMappings[gameVersion].hair.main[1]} ${hair_base[2]}00
+	${memoryMappings[gameVersion].hair.shadow[2]} ${hair_shad[0]}${hair_shad[1]}
+	${memoryMappings[gameVersion].hair.shadow[3]} ${hair_shad[2]}00
+	${memoryMappings[gameVersion].hair.main[2]} ${hair_base[0]}${hair_base[1]}
+	${memoryMappings[gameVersion].hair.main[3]} ${hair_base[2]}00
 
 	${memoryMappings[gameVersion].shoes.shadow[0]} ${shoe_shad[0]}${shoe_shad[1]}
 	${memoryMappings[gameVersion].shoes.shadow[1]} ${shoe_shad[2]}00
 	${memoryMappings[gameVersion].shoes.main[0]} ${shoe_base[0]}${shoe_base[1]}
-	${memoryMappings[gameVersion].shoes.main[1]} ${shoe_base[2]}00`;
+	${memoryMappings[gameVersion].shoes.main[1]} ${shoe_base[2]}00
+	${memoryMappings[gameVersion].shoes.shadow[2]} ${shoe_shad[0]}${shoe_shad[1]}
+	${memoryMappings[gameVersion].shoes.shadow[3]} ${shoe_shad[2]}00
+	${memoryMappings[gameVersion].shoes.main[2]} ${shoe_base[0]}${shoe_base[1]}
+	${memoryMappings[gameVersion].shoes.main[3]} ${shoe_base[2]}00`;
+
+	
 
 
 	document.getElementById("code").value = code.replaceAll("\t","").replace("\n", "").toUpperCase();

@@ -25,7 +25,7 @@ body.theme-light {
     background-attachment: fixed;
     /* backdrop-filter: var(--blur); */
     /* -webkit-backdrop-filter: var(--blur); */
-    height: auto;
+    min-height: 100vh;
     scrollbar-color: unset;
 
 }
@@ -91,7 +91,7 @@ div.header {
 
 div.blob {
     cursor: default;
-    height: -webkit-fill-available;
+    /* height: -webkit-fill-available; */
     align-items: flex-start;
     max-width: 30%;
 }
@@ -146,13 +146,28 @@ div.blob#color-selectors > h2:not(:first-of-type) {
     border-top: 1px solid var(--border);
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1200px) {
     div.content {
         flex-direction: column;
+        flex-wrap: nowrap;
     }
 
     div.blob {
         max-width: 100%;
+        flex-basis: 100%;
+    }
+
+    .content-wrapper {
+        flex-direction: column;
+        height: 100%; 
+        min-height: 100%;
+    }
+
+    .content {
+        overflow: visible;
+        flex-basis: 100%!important;
+        margin-left: 5%!important;
+        margin-right: 5%!important;
     }
 }
 
@@ -261,24 +276,37 @@ input.error {
 textarea {
     font-family: "Inconsolata";
     border-radius: var(--border-radius);
-    height: 490px;
-    max-width: 40%;
+    /* max-width: 40%; */
+    min-height: 860px;
+    height: auto;
     width: auto;
     font-size: 16px;
     line-height: 16px;
     padding: 5px;
-    margin-bottom: 5px;
     white-space: pre;
     overflow-wrap: normal;
-    overflow-x: scroll;
+    overflow-x: hidden;
+    overflow-y: visible;
     text-align: right;
+    border: none;
+    flex-basis: 50%;
 }
 
 textarea#guide {
-    border: none;
     background: transparent;
     cursor: default;
     text-align: left;
+}
+
+.textarea-container {
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border);
+    width: 80%;
+    height: 490px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin-bottom: 5px;
+    display: flex;
 }
 
 hr {
@@ -438,8 +466,8 @@ hr {
     top: 0;
     float: left;
     margin-top: 0;
-    backdrop-filter: blur(10px) brightness(0.5);
-    -webkit-backdrop-filter: blur(10px) brightness(0.5);
+    backdrop-filter: blur(10px) brightness(0.35);
+    -webkit-backdrop-filter: blur(10px) brightness(0.35);
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 88px;
@@ -575,3 +603,4 @@ ul .link {
     font-family: "Inconsolata";
     font-size: 18px;
 }
+
