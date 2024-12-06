@@ -400,17 +400,18 @@ hr {
     text-shadow: none;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.2s ease-out;
+    transition: all 0.2s ease-out;
     text-align: left;
     font-size: 16px;
     border: none;
     margin: 0 10px 5px 10px;
     width: 250px;
     color: var(--text);
+    border: 0px solid var(--border);
 }
 
 .panel.expanded {
-    border: 1px solid var(--border);
+    border-width: 1px;
     border-radius: 0 0 var(--border-radius) var(--border-radius);
     max-height: 350px;
     overflow-y: scroll;

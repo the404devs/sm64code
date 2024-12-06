@@ -240,7 +240,7 @@ function readLocalStorage() {
 		
 		if (key.startsWith("sm64cc-")) {
 			const code = JSON.parse(localStorage.getItem(key));
-			console.log(code)
+			// console.log(code)
 
 			const colorEntry = document.createElement("div");
 			colorEntry.classList.add("color-entry");
@@ -389,25 +389,23 @@ function getCurrentColorModel() {
 }
 
 function generate(){
-	//TODO: use currentColorModel
-	const hat_base = document.getElementById("cap-base").value.replace("#","").match(/(..?)/g);
-	const hat_shad = document.getElementById("cap-shadow").value.replace("#","").match(/(..?)/g);
+	const hat_base = currentColorModel["cap"]["base"].replace("#","").match(/(..?)/g);
+	const hat_shad = currentColorModel["cap"]["shadow"].replace("#","").match(/(..?)/g);
 
-	const hair_base = document.getElementById("hair-base").value.replace("#","").match(/(..?)/g);
-	const hair_shad = document.getElementById("hair-shadow").value.replace("#","").match(/(..?)/g);
+	const hair_base = currentColorModel["hair"]["base"].replace("#","").match(/(..?)/g);
+	const hair_shad = currentColorModel["hair"]["shadow"].replace("#","").match(/(..?)/g);
 
-	const skin_base = document.getElementById("skin-base").value.replace("#","").match(/(..?)/g);
-	const skin_shad = document.getElementById("skin-shadow").value.replace("#","").match(/(..?)/g);
+	const skin_base = currentColorModel["skin"]["base"].replace("#","").match(/(..?)/g);
+	const skin_shad = currentColorModel["skin"]["shadow"].replace("#","").match(/(..?)/g);
 
-	const glove_base = document.getElementById("gloves-base").value.replace("#","").match(/(..?)/g);
-	const glove_shad = document.getElementById("gloves-shadow").value.replace("#","").match(/(..?)/g);
+	const glove_base = currentColorModel["gloves"]["base"].replace("#","").match(/(..?)/g);
+	const glove_shad = currentColorModel["gloves"]["shadow"].replace("#","").match(/(..?)/g);
 
-	const overalls_base = document.getElementById("overalls-base").value.replace("#","").match(/(..?)/g);
-	const overalls_shad = document.getElementById("overalls-shadow").value.replace("#","").match(/(..?)/g);
+	const overalls_base = currentColorModel["overalls"]["base"].replace("#","").match(/(..?)/g);
+	const overalls_shad = currentColorModel["overalls"]["shadow"].replace("#","").match(/(..?)/g);
 
-	const shoe_base = document.getElementById("shoes-base").value.replace("#","").match(/(..?)/g);
-	const shoe_shad = document.getElementById("shoes-shadow").value.replace("#","").match(/(..?)/g);
-	// alert(hat_base[0])
+	const shoe_base = currentColorModel["shoes"]["base"].replace("#","").match(/(..?)/g);
+	const shoe_shad = currentColorModel["shoes"]["shadow"].replace("#","").match(/(..?)/g);
 
 	const code = `
 	${memoryMappings[gameVersion].hat_shirt.shadow[0]} ${hat_shad[0]}${hat_shad[1]}
