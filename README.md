@@ -5,6 +5,12 @@ A tool that creates action replay codes to change mario's colours in sm64
 
 https://sm64code.the404.nl
 
+### *2.0.3 (12/05/2024)*
+------------------------
+- [2.0.0](#200-08052024) removed some addresses I thought were redundant, but this caused codes to render weirdly in Project64 [#3](/../../issues/3).
+    - This has been rectified, and Mario's colours are nice and smooth in Project64.
+- Some styling tweaks to make things a bit prettier.
+
 ### *2.0.2 (08/07/2024)*
 ------------------------
 - You can now save colour codes locally.
