@@ -5,6 +5,10 @@ A tool that creates action replay codes to change mario's colours in sm64
 
 https://sm64code.the404.nl
 
+### *2.0.4 (04/20/2025)*
+------------------------
+- Just some layout fixes, mainly for mobile view.
+
 ### *2.0.3 (12/05/2024)*
 ------------------------
 - [2.0.0](#200-08052024) removed some addresses I thought were redundant, but this caused codes to render weirdly in Project64 [#3](/../../issues/3).
