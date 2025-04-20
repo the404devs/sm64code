@@ -363,7 +363,7 @@ function getCodeName() {
 }
 
 function updatePreview(id) {
-	const color = document.getElementById(id).value;
+	const color = document.getElementById(id).value.toUpperCase();
 	const preview = document.getElementById('preview');
 	const target = id+"-img";
 	const label = id+"-label";
@@ -384,7 +384,7 @@ function updatePreview(id) {
 function getCurrentColorModel() {
 	document.querySelectorAll(".mario-color").forEach(elem => {
 		const [part, type] = elem.id.split("-");
-		currentColorModel[part][type] = elem.value;
+		currentColorModel[part][type] = elem.value.toUpperCase();
 	}); 
 }
 

@@ -271,6 +271,7 @@ input[type=color] {
     margin-left: 10px;
     margin-top: 0;
     margin-bottom: 0;
+    height: 30px;
 }
 
 input[type=text] {
@@ -431,6 +432,10 @@ hr {
     border-radius: 0 0 var(--border-radius) var(--border-radius);
     max-height: 350px;
     overflow-y: scroll;
+}
+
+.panel p {
+    text-wrap-style: balance;
 }
 
 .foot-text.foot-text-big a {
