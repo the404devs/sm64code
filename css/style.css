@@ -17,7 +17,7 @@ body.theme-light {
 
     --shadow-color: rgba(0, 0, 0, 0.15);
     --shadow-color-alt: rgba(199, 121, 206, 0.5);
-    --shadow: 0 3px 6px var(--shadow-color);
+    --shadow: none;
     --shadow-alt: 0 3px 6px var(--shadow-color-alt);
     --blur: blur(10px) brightness(0.75);
 
@@ -104,6 +104,12 @@ div.header {
     background: var(--background-alt);
     height: 100px;
     padding-bottom: 0;
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+div.footer {
+    box-shadow: 0px -5px 5px rgba(0, 0, 0, 0.5) !important;
 }
 
 div.blob {
@@ -167,11 +173,17 @@ div.blob#color-selectors > h2:not(:first-of-type) {
         flex-direction: row;
         flex-wrap: wrap;
         align-items: stretch;
+        overflow: visible;
+        flex-basis: 100%!important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
     }
 
     div.blob {
-        max-width: 50%;
+        max-width: calc(50% - 20px);
         flex-basis: 50%;
+        margin-left: 10px;
+        margin-right: 10px;
     }
 
     div.blob.wide {
@@ -179,23 +191,24 @@ div.blob#color-selectors > h2:not(:first-of-type) {
         flex-basis: 100%;
     }
 
-    .content-wrapper {
+    div.content-wrapper {
         flex-direction: column;
         height: 100%; 
         min-height: 100%;
     }
 
-    .content {
-        overflow: visible;
-        flex-basis: 100%!important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-    }
+    /* input[type=color] {
+        height: 50px !important;
+    } */
 }
 
 .control-group > span {
     font-family: "Inconsolata";
     font-size: 14px;
+}
+
+.control-group > * {
+    vertical-align: middle;
 }
 
 label {
@@ -254,6 +267,7 @@ span#type {
     width: 95%;
     color: var(--text-alt);
     text-decoration: none;
+    text-rendering: geometricPrecision;
 }
 
 .button a span {
@@ -387,14 +401,23 @@ hr {
     border-radius: var(--border-radius);
 }
 
-.accordion.open, .accordion.open::before{
+.accordion:hover, .accordion.open, .accordion.open::before, .accordion.open::after {
+    text-shadow: 0 0 3px black;
+    font-weight: bold;
+}
+
+.accordion.open, .accordion.open::before {
     border-radius: var(--border-radius) var(--border-radius) 0 0;
+
 }
 
 .accordion.open::before, .accordion:hover::before {
     width: 100%;
     opacity: 0.5;
-    background-color: var(--theme);
+    /* background-color: var(--theme); */
+    background: linear-gradient(in hsl longer hue 135deg, red 0 90%);
+
+
 }
 
 .accordion:after {
@@ -481,7 +504,6 @@ hr {
     position: absolute;
     z-index: -1;
     transition: 0.15s ease width, 0.15s ease height, 0.4s ease transform;
-    border: 2px solid black;
 }
 
 .menu-button.right::before {
@@ -489,6 +511,7 @@ hr {
 }
 
 .menu-button:hover::before {
+    border: 2px solid black;
     height: 100%;
     width: 100%;
     transform: rotate(360deg);
@@ -502,6 +525,28 @@ hr {
 .menu-button i {
     font-size: 40px;
     padding: 0;
+}
+
+.menu-button > svg {
+    width: 40px;
+    height: 40px;
+    overflow: visible;
+    filter: drop-shadow(3px 3px 0 black);
+}
+
+.menu-button > svg > path {
+    fill: var(--text-alt);
+    stroke: black;
+    stroke-width: 5%;
+}
+
+.menu-button:hover > svg > path {
+    fill: transparent;
+    fill: var(--text);
+}
+
+.menu-button.shown {
+    opacity: 0;
 }
 
 
@@ -536,8 +581,13 @@ hr {
     border-right: none;
 }
 
+.sidenav.right.sidenav.shown {
+    box-shadow: -5px 0px 5px rgba(0, 0, 0, 0.5) !important;
+}
+
 .sidenav.shown {
     width: 300px;
+    box-shadow: 5px 0px 5px rgba(0, 0, 0, 0.5) !important;
 }
 
 .color-entry a {
@@ -581,9 +631,11 @@ hr {
 div#color-list {
     width: 100%;
     padding: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* align-items: center; */
+    border-top: 1px solid var(--background);
+    overflow-y: scroll;
 }
 
 .color-entry {
@@ -595,6 +647,7 @@ div#color-list {
     transition: 0.2s all ease;
     cursor: pointer;
     width: 250px;
+    min-height: 50px;
 }
 
 .color-entry span {
@@ -649,5 +702,21 @@ ul .link {
     color: var(--link);
     font-family: "Inconsolata";
     font-size: 18px;
+}
+
+button.button::before {
+    background: linear-gradient(in hsl longer hue 135deg, red 0 90%);
+    background-color: unset;
+    transition: 0.25s ease all;
+}
+
+.button:hover {
+    /* -webkit-text-stroke: 3px black */
+    text-shadow: 0 0 3px black;
+    font-weight: bold;
+}
+
+.button span::after {
+    top: -1px;
 }
 

@@ -321,8 +321,11 @@ function reset(){
 function toggleColorMenu() {
 	if (window.innerWidth <= 1000 && document.getElementById("help-menu").classList.contains("shown")) {
 		document.getElementById("help-menu").classList.remove("shown");
+		document.getElementById("help-menu-open").classList.remove("shown");
+		document.getElementById("content").classList.toggle("squeeze-left");
 	}
 	document.getElementById("color-menu").classList.toggle("shown");
+	document.getElementById("color-menu-open").classList.toggle("shown");
 	document.getElementById("content").classList.toggle("squeeze-right");
 
 }
@@ -330,8 +333,11 @@ function toggleColorMenu() {
 function toggleHelpMenu() {
 	if (window.innerWidth <= 1000 && document.getElementById("color-menu").classList.contains("shown")) {
 		document.getElementById("color-menu").classList.remove("shown");
+		document.getElementById("color-menu-open").classList.remove("shown");
+		document.getElementById("content").classList.toggle("squeeze-right");
 	}
 	document.getElementById("help-menu").classList.toggle("shown");
+	document.getElementById("help-menu-open").classList.toggle("shown");
 	document.getElementById("content").classList.toggle("squeeze-left");
 
 }
