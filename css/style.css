@@ -19,7 +19,7 @@ body.theme-light {
     --shadow-color-alt: rgba(199, 121, 206, 0.5);
     --shadow: none;
     --shadow-alt: 0 3px 6px var(--shadow-color-alt);
-    --blur: blur(10px) brightness(0.75);
+    --blur: brightness(0.75);
 
     background: var(--background-image);
     background-attachment: fixed;
@@ -106,6 +106,7 @@ div.header {
     padding-bottom: 0;
     border-bottom: 1px solid var(--border);
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+    backdrop-filter: var(--blur);
 }
 
 div.footer {
